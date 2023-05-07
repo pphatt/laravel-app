@@ -2,11 +2,18 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "compiler:sass": "sass --watch resources/assets/scss:public/css",
+        "compiler:ts": "tsc -w"
     },
     "devDependencies": {
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.7.2",
+        "prettier": "2.8.8",
+        "typescript": "^5.0.4",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "sass": "^1.62.1"
     }
 }
