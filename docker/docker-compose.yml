@@ -1,0 +1,25 @@
+version: '3.8'
+name: laravel-app
+services:
+  php:
+    build:
+      dockerfile: Dockerfile
+      args:
+        user: phat
+        uid: 1000
+        project_name: src
+    depends_on:
+      - db
+    volumes:
+      - ../:/var/www/html/
+    ports:
+      - "8000:8000"
+    environment:
+      XDEBUG_CONFIG: remote_host=host.docker.internal
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: gg
+    ports:
+      - "3306:3306"
