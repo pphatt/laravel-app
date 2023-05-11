@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('variant_option', function (Blueprint $table) {
             $table->bigIncrements("variant_option_id");
             $table->unsignedBigInteger("variant_id");
-            $table->string("variant_name", 30);
+            $table->string("variant_option_name", 30);
         });
 
         Schema::table('variant_option', function (Blueprint $table) {
