@@ -9,11 +9,18 @@
     <link rel="stylesheet" href="{{ asset("css/global.css") }}" />
     <link rel="stylesheet" href="{{ asset("css/components/button.css") }}" />
 
-    <link rel="stylesheet" href="{{ asset("css/sign-in.css") }}" />
+    @switch($child)
+        @case("sign-up")
+            <link rel="stylesheet" href="{{ asset("css/sign-up.css") }}" />
+            <script type="module" src="{{ asset("js/sign-up-form.js") }}" defer></script>
+            @break
+        @default
+            <link rel="stylesheet" href="{{ asset("css/sign-in.css") }}" />
+            <script type="module" src="{{ asset("js/sign-in-form.js") }}" defer></script>
+            @break
+    @endswitch
 
-    <script type="module" src="{{ asset("js/sign-in-form.js") }}" defer></script>
-
-    <title>Sign in</title>
+    <title>{{ $child }}</title>
 </head>
 <body>
 <div class="home">
@@ -35,7 +42,8 @@
                                 stroke-linejoin="round"
                                 class="mr-2 h-6 w-6"
                             >
-                                <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"></path>
+                                <path
+                                    d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"></path>
                               </svg>
                         </span>
                         <span class="-page">Tune Source</span>

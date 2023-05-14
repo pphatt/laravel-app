@@ -1,4 +1,4 @@
-@extends("layouts.sign-layout")
+@extends("layouts.sign-layout", ["child" => "sign-in"])
 
 @section("header")
     <div class="-sign-header">
