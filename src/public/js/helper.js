@@ -1,4 +1,5 @@
 "use strict";
+;
 (() => {
     window.scrollTo({ top: 36, behavior: "smooth" });
     window.addEventListener("scroll", () => {

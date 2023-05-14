@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('artist', function (Blueprint $table) {
+        Schema::create('artists', function (Blueprint $table) {
             $table->bigIncrements("artist_id");
             $table->string('artist_name', 256);
             $table->string('artist_email', 256);
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('artist');
+        Schema::dropIfExists('artists');
     }
 };

@@ -21,11 +21,11 @@ return new class extends Migration
         Schema::table('shop_order_details', function (Blueprint $table) {
             $table->foreign("shop_order_id")
                 ->references("shop_order_id")
-                ->on("shop_order")->cascadeOnDelete()->restrictOnDelete();
+                ->on("shop_orders")->cascadeOnDelete()->restrictOnDelete();
 
             $table->foreign("product_item_id")
                 ->references("product_item_id")
-                ->on("product_item")->cascadeOnDelete()->restrictOnDelete();
+                ->on("product_items")->cascadeOnDelete()->restrictOnDelete();
         });
     }
 

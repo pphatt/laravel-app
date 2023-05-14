@@ -4,22 +4,26 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('variant', function (Blueprint $table) {
-            $table->bigIncrements("variant_id");
+        Schema::create('promotion_categories', function (Blueprint $table) {
             $table->unsignedBigInteger("category_id");
-            $table->string("variant_name", 50);
+            $table->unsignedBigInteger("promotion_id");
         });
 
-        Schema::table('variant', function (Blueprint $table) {
+        Schema::table("promotion_categories", function (Blueprint $table) {
             $table->foreign("category_id")
                 ->references("category_id")
-                ->on("category")->cascadeOnDelete()->restrictOnDelete();
+                ->on("categories");
+
+            $table->foreign("promotion_id")
+                ->references("promotion_id")
+                ->on("promotions");
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('variant');
+        Schema::dropIfExists('promotion_categories');
     }
 };

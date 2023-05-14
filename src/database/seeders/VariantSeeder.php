@@ -13,7 +13,7 @@ class VariantSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("variant")->insert([
+        DB::table("variants")->insert([
             [
                 "category_id" => 2,
                 "variant_name" => "Color"

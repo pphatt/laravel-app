@@ -1,0 +1,469 @@
+.main-navigator .navigator-right, .main-navigator .navigator-left, .main-navigator .header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.-product-card-visual .photo .is-hover div, .-product-card-visual .photo .is-default div {
+  padding-top: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.-product-card-visual .photo .is-hover div picture, .-product-card-visual .photo .is-default div picture {
+  display: block;
+  max-width: 100%;
+}
+.-product-card-visual .photo .is-hover div picture img, .-product-card-visual .photo .is-default div picture img {
+  opacity: 1;
+  position: absolute;
+  display: block;
+  height: calc(100% + 1px);
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition: opacity 0.4s linear;
+  width: calc(100% + 1px);
+  z-index: 1;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.header {
+  height: 0;
+  position: sticky;
+  top: 0;
+  z-index: 6;
+}
+
+.main-navigator {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25.5px;
+  border-bottom: 1px solid white;
+  z-index: 7;
+  background: linear-gradient(to bottom, white 50%, transparent 50%) bottom;
+  background-size: 100% 200%;
+  transition-property: color, background-color, background-position, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+.main-navigator div > a[data-btn-type=link],
+.main-navigator div > button[data-btn-type=default] {
+  color: white;
+}
+.main-navigator div > a[data-btn-type=link]:hover,
+.main-navigator div > button[data-btn-type=default]:hover {
+  color: white;
+}
+.main-navigator .header-title .header-content-title {
+  font-size: 40px;
+  line-height: 40px;
+}
+.main-navigator .header-title .header-content-title a {
+  color: white;
+  text-decoration: none;
+}
+.main-navigator .header-title .header-content-title a a:visited {
+  color: #000;
+}
+.main-navigator .navigator-left {
+  gap: 4px;
+}
+.main-navigator .navigator-left .-shop-nav,
+.main-navigator .navigator-left .-info-nav {
+  background-color: transparent;
+}
+.main-navigator .navigator-left .-shop-nav:hover,
+.main-navigator .navigator-left .-info-nav:hover {
+  background-color: transparent;
+  text-underline-offset: 4px;
+  text-decoration: solid underline currentColor 2px;
+}
+.main-navigator .navigator-right {
+  gap: 4px;
+}
+.main-navigator.isScroll {
+  border-bottom-color: #000;
+  background-position: top;
+}
+.main-navigator.isScroll div > a,
+.main-navigator.isScroll div > button {
+  color: #000;
+}
+.main-navigator.isScroll div > a:hover,
+.main-navigator.isScroll div > button:hover {
+  color: #000;
+}
+.main-navigator.isScroll .header-title > .header-content-title > a {
+  color: #000;
+}
+
+.-nav-expand {
+  background-color: white;
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 3;
+}
+@media (min-width: 768px) {
+  .-nav-expand {
+    display: block;
+  }
+}
+
+.-nav-expand-outer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  overflow: hidden;
+  pointer-events: none;
+  margin-top: -0.1rem;
+  background-color: white;
+  padding: 4px 32px 32px 32px;
+  border-bottom: 1px solid #000;
+  transform-origin: top center;
+  transition: visibility, height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.-nav-expand-outer.-active {
+  pointer-events: auto;
+  animation: dropdown-down 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes dropdown-down {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    visibility: visible;
+    transform: scaleY(1);
+  }
+}
+.-nav-expand-outer.-in-active-shop {
+  animation: dropdown-up-1 600ms ease forwards;
+}
+@keyframes dropdown-up-1 {
+  0% {
+    visibility: visible;
+    transform: scaleY(1);
+  }
+  100% {
+    visibility: hidden;
+    transform: translateY(-510px);
+  }
+}
+.-nav-expand-outer.-in-active-info {
+  animation: dropdown-up-2 300ms ease forwards;
+}
+@keyframes dropdown-up-2 {
+  0% {
+    visibility: visible;
+    transform: scaleY(1);
+  }
+  100% {
+    visibility: hidden;
+    transform: translateY(-145px);
+  }
+}
+.-nav-expand-outer.-switch-s {
+  height: 484px;
+  visibility: visible;
+  transform: scaleY(1);
+  animation: skrink-down 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes skrink-down {
+  100% {
+    height: 144px;
+  }
+}
+.-nav-expand-outer.-switch-i {
+  height: 144px;
+  visibility: visible;
+  transform: scaleY(1);
+  animation: skrink-up 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes skrink-up {
+  100% {
+    height: 484px;
+  }
+}
+
+.-nav-expand-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.-nav-expand-inner .-div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.-nav-expand-inner .-div .-nav-expand-feature {
+  padding-left: 2rem;
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+.-nav-expand-content {
+  flex: 1;
+}
+.-nav-expand-content ul {
+  opacity: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.-nav-expand-content ul.-active {
+  animation: text-slide-in 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes text-slide-in {
+  from {
+    transform: translateX(-2%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.-nav-expand-content ul.-in-active {
+  animation: text-slide-out 50ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes text-slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(0%);
+  }
+}
+.-nav-expand-content ul.-i {
+  transform: translateX(-2%);
+  animation: -i 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes -i {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.-nav-expand-content ul.-s {
+  transform: translateX(-2%);
+  animation: -s 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes -s {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.-nav-expand-content ul li {
+  font-size: 36px;
+  line-height: 54px;
+  font-weight: 400;
+}
+.-nav-expand-content ul li a {
+  color: #000;
+  text-decoration: none;
+  opacity: 1;
+  transition-duration: 0.2s;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.-nav-expand-content ul li a:hover {
+  opacity: 0.4;
+}
+
+.line {
+  height: 0;
+  width: 1px;
+  background-color: #000;
+}
+.line.-active {
+  animation: border-draw-down 300ms ease-in-out forwards;
+}
+@keyframes border-draw-down {
+  to {
+    height: 100%;
+  }
+}
+.line.-in-active {
+  animation: border-draw-up 150ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes border-draw-up {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0;
+  }
+}
+
+.-feature-title {
+  display: block;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  position: absolute;
+  right: 99%;
+  text-transform: uppercase;
+  top: 0;
+  width: 1rem;
+}
+.-feature-title span {
+  display: block;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translateX(20%) rotate(90deg);
+  transform-origin: left top;
+  white-space: nowrap;
+  opacity: 0;
+}
+.-feature-title span.-active {
+  animation: feature-title-slide-down 300ms ease-in-out forwards;
+}
+@keyframes feature-title-slide-down {
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(90deg);
+  }
+}
+.-feature-title span.-in-active {
+  animation: feature-title-slide-up 50ms ease-in-out forwards;
+}
+@keyframes feature-title-slide-up {
+  from {
+    opacity: 1;
+    transform: translateX(0) rotate(90deg);
+  }
+  to {
+    opacity: 0;
+    transform: translate(0, -100%) rotate(90deg);
+  }
+}
+
+.-product-card-featured {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  position: relative;
+  opacity: 0;
+  border-width: 1px;
+  margin: -0.5px;
+  padding-right: 2rem;
+  white-space: normal;
+  height: 100%;
+  max-width: 400px;
+}
+.-product-card-featured.-active {
+  animation: product-pic-slide-in 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes product-pic-slide-in {
+  from {
+    transform: translateX(-2%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.-product-card-featured.-in-active {
+  animation: product-pic-slide-out 50ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes product-pic-slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(5%);
+  }
+}
+.-product-card-featured:hover .-product-card-visual .photo .is-hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.-product-card-visual {
+  position: relative;
+}
+.-product-card-visual .photo {
+  overflow: hidden;
+  position: relative;
+}
+.-product-card-visual .photo .is-default {
+  margin: 0;
+  position: relative;
+}
+.-product-card-visual .photo .is-hover {
+  margin: 0;
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transition-duration: 0.15s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  z-index: 1;
+}
+
+.-product-card-details {
+  margin-top: 6px !important;
+}
+.-product-card-details .-product-card-header .-product-title {
+  text-align: center;
+}
+.-product-card-details .-product-card-header .-product-title .-product-link {
+  font-size: 25px !important;
+  line-height: 45px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  color: #000 !important;
+}
+.-product-card-details .-product-card-header .-product-title .-product-link:after {
+  content: "";
+  display: block;
+  inset: 0;
+  position: absolute;
+  z-index: 2;
+}
+.-product-card-details .-product-card-header .-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px !important;
+}
+.-product-card-details .-product-card-header .-price .-price-current {
+  font-size: 16px;
+  font-weight: 600;
+}
+.-product-card-details .-product-card-header .-price .-price-discount {
+  background-color: #000;
+  border-radius: 0.3rem;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-left: 0.8rem;
+  padding: 0.4rem 0.6rem;
+  text-transform: uppercase;
+}
+
+.-back-drop {
+  background-color: rgba(0, 0, 0, 0.4);
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 0.15s linear;
+}
+.-back-drop.-active {
+  backdrop-filter: blur(6px);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/*# sourceMappingURL=header.css.map */

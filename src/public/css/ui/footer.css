@@ -1,0 +1,90 @@
+.-footer {
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.-footer .-footer- {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.-footer .-footer- .-footer-block {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 32px;
+  height: auto;
+  width: 100%;
+  border-right: 1px solid #000;
+}
+.-footer .-footer- .-footer-block:last-child {
+  border-right: 0;
+}
+.-footer .-footer- .-footer-block h2 {
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+.-footer .-footer- .-footer-block ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-bottom: 32px;
+}
+.-footer .-footer- .-footer-block ul li {
+  font-weight: 400;
+}
+.-footer .-footer- .-footer-block ul li a {
+  color: currentColor;
+  display: inline-block;
+  padding: 8px 0;
+  text-decoration: none;
+}
+.-footer .-footer- .-footer-block form {
+  margin-top: auto;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #000;
+}
+.-footer .-footer- .-footer-block form div {
+  display: flex;
+  align-items: center;
+}
+.-footer .-footer- .-footer-block form div input[type=email] {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: #000;
+  font-family: inherit;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.-footer .-footer- .-footer-block form div input[type=email]:focus {
+  outline: none;
+}
+.-footer .-footer- .-footer-block form div button {
+  color: #000;
+  background-color: transparent;
+}
+.-footer .-footer- .-footer-block .-social-link {
+  display: flex;
+}
+.-footer .-footer- .-footer-block .-social-link a {
+  display: block;
+  height: 38px;
+  width: 38px;
+}
+.-footer .-footer- .-footer-block .-social-link a svg {
+  height: 100%;
+  width: 100%;
+}
+.-footer .-footer- .-footer-block p {
+  margin-top: auto;
+}
+
+/*# sourceMappingURL=footer.css.map */

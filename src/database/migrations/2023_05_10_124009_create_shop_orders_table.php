@@ -10,33 +10,33 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('shop_order', function (Blueprint $table) {
+        Schema::create('shop_orders', function (Blueprint $table) {
             $table->bigIncrements("shop_order_id");
             $table->unsignedBigInteger("user_id");
             $table->dateTime("order_date");
-            $table->unsignedBigInteger("payment_method");
+            $table->unsignedBigInteger("payment_method_id");
             $table->string("shipping_address", 100);
-            $table->unsignedBigInteger("shipping_method");
+            $table->unsignedBigInteger("shipping_method_id");
             $table->mediumText("order_total");
-            $table->unsignedBigInteger("order_status");
+            $table->unsignedBigInteger("order_status_id");
         });
 
-        Schema::table("shop_order", function (Blueprint $table) {
+        Schema::table("shop_orders", function (Blueprint $table) {
             $table->foreign("user_id")
                 ->references("id")
                 ->on("users")->cascadeOnDelete()->restrictOnDelete();
 
-            $table->foreign("payment_method")
+            $table->foreign("payment_method_id")
                 ->references("payment_method_id")
-                ->on("payment_method")->cascadeOnDelete()->restrictOnDelete();
+                ->on("payment_methods")->cascadeOnDelete()->restrictOnDelete();
 
-            $table->foreign("shipping_method")
+            $table->foreign("shipping_method_id")
                 ->references("shipping_method_id")
-                ->on("shipping_method")->cascadeOnDelete()->restrictOnDelete();
+                ->on("shipping_methods")->cascadeOnDelete()->restrictOnDelete();
 
-            $table->foreign("order_status")
+            $table->foreign("order_status_id")
                 ->references("order_status_id")
-                ->on("order_status")->cascadeOnDelete()->restrictOnDelete();
+                ->on("order_statuses")->cascadeOnDelete()->restrictOnDelete();
         });
     }
 
@@ -45,6 +45,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('shop_order');
+        Schema::dropIfExists('shop_orders');
     }
 };

@@ -1,0 +1,106 @@
+@use "../variables" as var;
+
+.-footer {
+  background-color: var.$base-foreground;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid var.$base-background;
+  border-bottom: 1px solid var.$base-background;
+
+  .-footer- {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    .-footer-block {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 32px;
+      height: auto;
+      width: 100%;
+      border-right: 1px solid var.$base-background;
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      h2 {
+        font-size: 30px;
+        line-height: 38px;
+        font-weight: 400;
+        margin-bottom: 16px;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin-bottom: 32px;
+
+        li {
+          font-weight: 400;
+
+          a {
+            color: currentColor;
+            display: inline-block;
+            padding: 8px 0;
+            text-decoration: none;
+          }
+        }
+      }
+
+      form {
+        margin-top: auto;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var.$base-background;
+
+        div {
+          display: flex;
+          align-items: center;
+
+          input[type="email"] {
+            appearance: none;
+            background-color: transparent;
+            border: none;
+            color: var.$base-background;
+            font-family: inherit;
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+            height: 100%;
+            width: 100%;
+            position: relative;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          button {
+            color: var.$base-background;
+            background-color: transparent;
+          }
+        }
+      }
+
+      .-social-link {
+        display: flex;
+
+        a {
+          display: block;
+          height: 38px;
+          width: 38px;
+
+          svg {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+
+      p {
+        margin-top: auto;
+      }
+    }
+  }
+}

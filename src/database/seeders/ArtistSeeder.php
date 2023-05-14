@@ -13,7 +13,7 @@ class ArtistSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("artist")->insert([
+        DB::table("artists")->insert([
            [
                "artist_name" => "Doja Cat",
                "artist_email" => "name@example.com"],

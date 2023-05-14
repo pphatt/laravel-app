@@ -13,7 +13,7 @@ class VariantOptionSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("variant_option")->insert([
+        DB::table("variant_options")->insert([
             [
                 "variant_id" => 1,
                 "variant_option_name" => "Black"

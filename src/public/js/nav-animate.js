@@ -1,10 +1,9 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class NavAnimation {
     constructor(elems) {
         this.stateIsScroll = document.getElementById("main-navigator")?.classList.contains("isScroll") ||
             true;
-        this.stateNavExpand = false;
+        this.stateNavExpand = false; // equivalent to activeNavDropdown in next-js
         this.stateShopTransition = false;
         this.stateInfoTransition = false;
         this.statePendingSwitchAnimation = false;
@@ -22,59 +21,59 @@ class NavAnimation {
         this.setupAnimationEnd();
     }
     setupEventListener() {
-        const handleShop = (e, name) => {
-            this.statePendingSwitchAnimation = false;
-            if (name === "shop") {
-                this.stateShopTransition = !this.stateShopTransition;
-                if (this._div.childElementCount === 1 && !this.stateInfoTransition) {
-                    this.DOMNavFeature();
-                    this.navUlGroupElement = document.getElementById("-ul-nav");
-                    this.line = document.getElementById("line");
-                    this.featureTitle = document.getElementById("-ft");
-                }
-            }
-            else {
-                this.stateInfoTransition = !this.stateInfoTransition;
-                if (this._div.childElementCount > 1 && !this.stateShopTransition) {
-                    while (this._div.childElementCount > 1) {
-                        this._div.removeChild(this._div.children[1]);
-                    }
-                }
-            }
-            if (name === "shop" &&
-                !this.statePendingSwitchAnimation &&
-                this.stateInfoTransition) {
-                this.statePendingSwitchAnimation = true;
-                this.stateInfoTransition = false;
-                this.navUlGroupElement.className = "-in-active";
-                this.navUlGroupElement.style.animationDelay = "0ms";
-                this.navExpandElement.className = "-nav-expand-outer -active -switch-i";
+        this.shopButtonElement.addEventListener("click", (e) => this.handleShop(e, "shop"));
+        this.infoButtonElement.addEventListener("click", (e) => this.handleShop(e, "info"));
+    }
+    handleShop(e, name) {
+        this.statePendingSwitchAnimation = false;
+        if (name === "shop") {
+            this.stateShopTransition = !this.stateShopTransition;
+            if (this._div.childElementCount === 1 && !this.stateInfoTransition) {
                 this.DOMNavFeature();
                 this.navUlGroupElement = document.getElementById("-ul-nav");
                 this.line = document.getElementById("line");
                 this.featureTitle = document.getElementById("-ft");
             }
-            else if (name === "info" &&
-                !this.statePendingSwitchAnimation &&
-                this.stateShopTransition) {
-                this.statePendingSwitchAnimation = true;
-                this.stateShopTransition = false;
-                this.navUlGroupElement.className = "-in-active";
-                this.navUlGroupElement.style.animationDelay = "0ms";
-                this.navExpandElement.className = "-nav-expand-outer -active -switch-s";
+        }
+        else {
+            this.stateInfoTransition = !this.stateInfoTransition;
+            if (this._div.childElementCount > 1 && !this.stateShopTransition) {
                 while (this._div.childElementCount > 1) {
                     this._div.removeChild(this._div.children[1]);
                 }
-                return;
             }
-            if (!this.statePendingSwitchAnimation ||
-                (!this.stateShopTransition && !this.stateInfoTransition)) {
-                this.stateNavExpand = !this.stateNavExpand;
+        }
+        if (name === "shop" &&
+            !this.statePendingSwitchAnimation &&
+            this.stateInfoTransition) {
+            this.statePendingSwitchAnimation = true;
+            this.stateInfoTransition = false;
+            this.navUlGroupElement.className = "-in-active";
+            this.navUlGroupElement.style.animationDelay = "0ms";
+            this.navExpandElement.className = "-nav-expand-outer -active -switch-i";
+            this.DOMNavFeature();
+            this.navUlGroupElement = document.getElementById("-ul-nav");
+            this.line = document.getElementById("line");
+            this.featureTitle = document.getElementById("-ft");
+        }
+        else if (name === "info" &&
+            !this.statePendingSwitchAnimation &&
+            this.stateShopTransition) {
+            this.statePendingSwitchAnimation = true;
+            this.stateShopTransition = false;
+            this.navUlGroupElement.className = "-in-active";
+            this.navUlGroupElement.style.animationDelay = "0ms";
+            this.navExpandElement.className = "-nav-expand-outer -active -switch-s";
+            while (this._div.childElementCount > 1) {
+                this._div.removeChild(this._div.children[1]);
             }
-            this.animationExpand(name);
-        };
-        this.shopButtonElement.addEventListener("click", (e) => handleShop(e, "shop"));
-        this.infoButtonElement.addEventListener("click", (e) => handleShop(e, "info"));
+            return;
+        }
+        if (!this.statePendingSwitchAnimation ||
+            (!this.stateShopTransition && !this.stateInfoTransition)) {
+            this.stateNavExpand = !this.stateNavExpand;
+        }
+        this.animationExpand(name);
     }
     setupAnimationEnd() {
         const handleAnimationEnd = (e) => {

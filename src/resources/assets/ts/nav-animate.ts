@@ -1,5 +1,3 @@
-import { product } from "./IProduct"
-
 class NavAnimation {
   private navElement: HTMLElement
   private shopButtonElement: HTMLElement
@@ -13,7 +11,7 @@ class NavAnimation {
   private stateIsScroll: boolean =
     document.getElementById("main-navigator")?.classList.contains("isScroll") ||
     true
-  private stateNavExpand: boolean = false
+  private stateNavExpand: boolean = false // equivalent to activeNavDropdown in next-js
   private stateShopTransition: boolean = false
   private stateInfoTransition: boolean = false
   private statePendingSwitchAnimation: boolean = false
@@ -54,43 +52,21 @@ class NavAnimation {
   }
 
   setupEventListener() {
-    const handleShop = (e: MouseEvent, name: string) => {
-      this.statePendingSwitchAnimation = false
+    this.shopButtonElement.addEventListener("click", (e) =>
+      this.handleShop(e, "shop")
+    )
+    this.infoButtonElement.addEventListener("click", (e) =>
+      this.handleShop(e, "info")
+    )
+  }
 
-      if (name === "shop") {
-        this.stateShopTransition = !this.stateShopTransition
+  handleShop(e: MouseEvent, name: string) {
+    this.statePendingSwitchAnimation = false
 
-        if (this._div.childElementCount === 1 && !this.stateInfoTransition) {
-          this.DOMNavFeature()
+    if (name === "shop") {
+      this.stateShopTransition = !this.stateShopTransition
 
-          this.navUlGroupElement = document.getElementById(
-            "-ul-nav"
-          ) as HTMLElement
-          this.line = document.getElementById("line") as HTMLElement
-          this.featureTitle = document.getElementById("-ft") as HTMLElement
-        }
-      } else {
-        this.stateInfoTransition = !this.stateInfoTransition
-
-        if (this._div.childElementCount > 1 && !this.stateShopTransition) {
-          while (this._div.childElementCount > 1) {
-            this._div.removeChild(this._div.children[1])
-          }
-        }
-      }
-
-      if (
-        name === "shop" &&
-        !this.statePendingSwitchAnimation &&
-        this.stateInfoTransition
-      ) {
-        this.statePendingSwitchAnimation = true
-        this.stateInfoTransition = false
-
-        this.navUlGroupElement.className = "-in-active"
-        this.navUlGroupElement.style.animationDelay = "0ms"
-
-        this.navExpandElement.className = "-nav-expand-outer -active -switch-i"
+      if (this._div.childElementCount === 1 && !this.stateInfoTransition) {
         this.DOMNavFeature()
 
         this.navUlGroupElement = document.getElementById(
@@ -98,42 +74,62 @@ class NavAnimation {
         ) as HTMLElement
         this.line = document.getElementById("line") as HTMLElement
         this.featureTitle = document.getElementById("-ft") as HTMLElement
-      } else if (
-        name === "info" &&
-        !this.statePendingSwitchAnimation &&
-        this.stateShopTransition
-      ) {
-        this.statePendingSwitchAnimation = true
-        this.stateShopTransition = false
+      }
+    } else {
+      this.stateInfoTransition = !this.stateInfoTransition
 
-        this.navUlGroupElement.className = "-in-active"
-        this.navUlGroupElement.style.animationDelay = "0ms"
-
-        this.navExpandElement.className = "-nav-expand-outer -active -switch-s"
-
+      if (this._div.childElementCount > 1 && !this.stateShopTransition) {
         while (this._div.childElementCount > 1) {
           this._div.removeChild(this._div.children[1])
         }
-
-        return
       }
-
-      if (
-        !this.statePendingSwitchAnimation ||
-        (!this.stateShopTransition && !this.stateInfoTransition)
-      ) {
-        this.stateNavExpand = !this.stateNavExpand
-      }
-
-      this.animationExpand(name)
     }
 
-    this.shopButtonElement.addEventListener("click", (e) =>
-      handleShop(e, "shop")
-    )
-    this.infoButtonElement.addEventListener("click", (e) =>
-      handleShop(e, "info")
-    )
+    if (
+      name === "shop" &&
+      !this.statePendingSwitchAnimation &&
+      this.stateInfoTransition
+    ) {
+      this.statePendingSwitchAnimation = true
+      this.stateInfoTransition = false
+
+      this.navUlGroupElement.className = "-in-active"
+      this.navUlGroupElement.style.animationDelay = "0ms"
+
+      this.navExpandElement.className = "-nav-expand-outer -active -switch-i"
+      this.DOMNavFeature()
+
+      this.navUlGroupElement = document.getElementById("-ul-nav") as HTMLElement
+      this.line = document.getElementById("line") as HTMLElement
+      this.featureTitle = document.getElementById("-ft") as HTMLElement
+    } else if (
+      name === "info" &&
+      !this.statePendingSwitchAnimation &&
+      this.stateShopTransition
+    ) {
+      this.statePendingSwitchAnimation = true
+      this.stateShopTransition = false
+
+      this.navUlGroupElement.className = "-in-active"
+      this.navUlGroupElement.style.animationDelay = "0ms"
+
+      this.navExpandElement.className = "-nav-expand-outer -active -switch-s"
+
+      while (this._div.childElementCount > 1) {
+        this._div.removeChild(this._div.children[1])
+      }
+
+      return
+    }
+
+    if (
+      !this.statePendingSwitchAnimation ||
+      (!this.stateShopTransition && !this.stateInfoTransition)
+    ) {
+      this.stateNavExpand = !this.stateNavExpand
+    }
+
+    this.animationExpand(name)
   }
 
   setupAnimationEnd() {
@@ -280,7 +276,7 @@ class NavAnimation {
   }
 
   DOMNavFeature() {
-    const featureProducts: product[] = [
+    const featureProducts = [
       {
         product_name: "Ultra Magic Tee",
         product_figure_1:

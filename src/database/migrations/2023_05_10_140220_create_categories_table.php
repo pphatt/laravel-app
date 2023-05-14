@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shipping_method', function (Blueprint $table) {
-            $table->bigIncrements("shipping_method_id");
-            $table->string('shipping_method_name', 256);
+        Schema::create('categories', function (Blueprint $table) {
+            $table->bigIncrements("category_id");
+            $table->string("category_name");
         });
     }
 
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shipping_method');
+        Schema::dropIfExists('categories');
     }
 };
