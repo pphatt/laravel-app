@@ -15,7 +15,7 @@
     <script type="module" src="{{ asset("js/helper.js") }}" defer></script>
     <script type="module" src="{{ asset("js/nav-animate.js") }}" defer></script>
 
-    @yield("head")
+    {{ $head }}
 </head>
 <body>
 <div class="home">
@@ -29,7 +29,7 @@
 
     <x-ui.header is-scroll="is-scroll" :$products />
 
-    @yield("main")
+    {{ $main }}
 
     <x-ui.footer />
 </div>

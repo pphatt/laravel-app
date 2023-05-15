@@ -23,3 +23,7 @@ Route::get("/sign-in", function() {
 Route::get("/sign-up", function() {
     return view("sign-up");
 });
+
+Route::get("/user/general", function() {
+   return view("user.general");
+});
