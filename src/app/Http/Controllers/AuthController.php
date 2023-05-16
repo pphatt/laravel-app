@@ -63,4 +63,12 @@ class AuthController extends Controller
 
         return redirect(route("home"));
     }
+
+    public function handleRole() {
+        if (Auth::user()->role == 1) {
+            return redirect(route("admin.general"));
+        } else {
+            return redirect(route("user.general"));
+        }
+    }
 }

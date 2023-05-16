@@ -25,7 +25,7 @@
         </div>
         <div class="navigator-right">
             @auth
-                <a href="{{ route("user.general") }}" class="button" data-btn-type="link"
+                <a href="{{ (auth()->user()->role == 0) ? (route("user.general")) : (route("admin.general")) }}" class="button" data-btn-type="link"
                    style="
                        text-overflow: ellipsis;
                        overflow: hidden;

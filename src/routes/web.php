@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\OrderController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\user\OrderController;
+use App\Http\Controllers\user\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,19 +20,19 @@ use App\Http\Controllers\AuthController;
 
 Route::get("/", [HomeController::class, "index"])->name("home");
 
-Route::group(["middleware" => "auth"], function () {
+Route::group(["middleware" => ["auth", "role"]], function () {
     Route::prefix("user")->group(function () {
-        Route::get("/general", function () {
-            return view("user.general");
-        })->name("user.general");
+        Route::get("/general", [UserController::class, "general"])->name("user.general");
 
-        Route::get("/billings", function () {
-            return view("user.billing");
-        })->name("user.billing");
+        Route::get("/billings", [UserController::class, "billing"])->name("user.billing");
 
         Route::get("/order", [OrderController::class, "view"])->name("user.order");
 
         Route::get("/order/{id}", [OrderController::class, "view_details"])->name("user.order_detail");
+    });
+
+    Route::prefix("admin")->group(function () {
+        Route::get("/general", [AdminController::class, "general"])->name("admin.general");
     });
 });
 

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset("css/components/button.css") }}" />
     <link rel="stylesheet" href="{{ asset("css/layout/account-layout.css") }}" />
     <link rel="stylesheet" href="{{ asset("css/ui/user-navigation.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/ui/admin-navigation.css") }}" />
     <link rel="stylesheet" href="{{ asset("css/ui/route-path.css") }}" />
 
     <script type="module" src="{{ asset("js/feedback-helper.js") }}" defer></script>
@@ -22,7 +23,11 @@
     <div class="-layout">
         <main>
             <div class="-main-layout">
-                <x-ui.user-navigation route-name="{{ $routeName }}" />
+                @if (auth()->user()->role == 0)
+                    <x-ui.user-navigation route-name="{{ $routeName }}" />
+                @else
+                    <x-ui.admin-navigation route-name="{{ $routeName }}" />
+                @endif
 
                 <div class="-panel">
                     <x-ui.route-path />

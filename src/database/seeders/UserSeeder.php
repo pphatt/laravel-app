@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 "address" => "Somewhere Q5",
                 "phone_number" => "0123456789",
                 "sex" => "Male",
-                "is_admin" => 0
+                "role" => 0
             ]
         ]);
     }

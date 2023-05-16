@@ -1,6 +1,6 @@
 <x-layouts.account-layout title="General" route-name="General">
     <x-slot:head>
-        <link rel="stylesheet" href="{{ asset("css/user/order_details.css")}}"/>
+        <link rel="stylesheet" href="{{ asset("css/user/order_details.css")}}" />
     </x-slot:head>
 
     <x-slot:content>
@@ -45,11 +45,11 @@
                                 </div>
                                 <div class="-title">
                                     <p>Order date:</p>
-                                    <p class="-description">{{$order_description[0]->order_date}}</p>
+                                    <p class="-description">{{date("M j, Y", strtotime($order_description[0]->order_date))}}</p>
                                 </div>
                                 <div class="-title">
                                     <p>Deliver date:</p>
-                                    <p class="-description">{{$order_description[0]->received_date}}</p>
+                                    <p class="-description">{{date("M j, Y", strtotime($order_description[0]->received_date))}}</p>
                                 </div>
                                 <div class="-title">
                                     <p>Payment method:</p>
@@ -84,10 +84,12 @@
                                             <p>{{$detail->quantity}}</p>
                                         </div>
                                         <div class="unit-price">
-                                            <p>{{$detail->unit_price}}</p>
+                                            <p>
+                                                ${{(str_contains($detail->unit_price, ".")) ? $detail->unit_price : number_format((float)$detail->unit_price, 2, ".", "")}}
+                                            </p>
                                         </div>
                                         <div class="price">
-                                            <p>${{$detail->price}}</p>
+                                            <p>${{(str_contains($detail->price, ".")) ? $detail->price : number_format((float)$detail->price, 2, ".", "")}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +102,7 @@
                                 </div>
                                 <div class="-price">
                                     <span>$</span>
-                                    <span>{{$order_description[0]->price}}</span>
+                                    <span>{{number_format((float)$order_description[0]->price, 1, ".", '')}}</span>
                                 </div>
                             </div>
                             <div class="-shipping">
@@ -128,7 +130,7 @@
                                 </div>
                                 <div class="-price">
                                     <span>$</span>
-                                    <h3>{{$order_description[0]->price}}</h3>
+                                    <h3>{{number_format((float)$order_description[0]->price, 1, ".", '')}}</h3>
                                 </div>
                             </div>
                         </div>

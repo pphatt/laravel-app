@@ -2,14 +2,11 @@
     $url_parser = explode("/", url()->full());
     $url_path = [];
 
-    if ($url_parser[3] == "user") {
-        array_push($url_path, "user.general");
+    array_push($url_path, $url_parser[3].".general");
 
-        for ($i = 4; $i < count($url_parser) - 1; $i++) {
-            array_push($url_path, $url_parser[3] . "." . $url_parser[$i]);
-        }
+    for ($i = 4; $i < count($url_parser); $i++) {
+        array_push($url_path, $url_parser[3] . "." . $url_parser[$i]);
     }
-
     /*
      * user/general
      * user/order
