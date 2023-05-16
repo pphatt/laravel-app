@@ -31,6 +31,12 @@ class ShopOrderDetailsSeeder extends Seeder
                 "product_item_id" => 3,
                 "quantity" => 2,
                 "price" => 50.54
+            ],
+            [
+                "shop_order_id" => 1,
+                "product_item_id" => 4,
+                "quantity" => 2,
+                "price" => 50.54
             ]
         ]);
     }

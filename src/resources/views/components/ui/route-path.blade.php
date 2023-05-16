@@ -1,17 +1,11 @@
 @php
     $url_parser = explode("/", url()->full());
     $url_path = [];
-    $flag = 0;
 
     if ($url_parser[3] == "user") {
         array_push($url_path, "user.general");
 
-        if (count($url_path) == 5) {
-            array_push($url_path, "user.order_details" . "." . $url_parser[5]);
-            $flag++;
-        }
-
-        for ($i = 4; $i < count($url_parser) - $flag; $i++) {
+        for ($i = 4; $i < count($url_parser) - 1; $i++) {
             array_push($url_path, $url_parser[3] . "." . $url_parser[$i]);
         }
     }
@@ -47,8 +41,13 @@
                         <path d="M16 3.549L7.12 20.600"></path>
                     </svg>
                 </span>
-                <a class="-current-route" style="text-transform: capitalize"
-                   href="{{ route($url_path[$i - 3]) }}">{{ $url_parser[$i] }}</a>
+                @if ($i == 5)
+                    <a class="-current-route" style="text-transform: capitalize"
+                       href="{{ route("user.order_detail", ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>
+                @else
+                    <a class="-current-route" style="text-transform: capitalize"
+                       href="{{ route($url_path[$i - 3]) }}">{{ $url_parser[$i] }}</a>
+                @endif
             </div>
         @endfor
     </div>

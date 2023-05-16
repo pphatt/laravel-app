@@ -1,6 +1,6 @@
 <x-layouts.account-layout title="General" route-name="General">
     <x-slot:head>
-        <link rel="stylesheet" href="{{ asset("css/user/order_details.css")}}" />
+        <link rel="stylesheet" href="{{ asset("css/user/order_details.css")}}"/>
     </x-slot:head>
 
     <x-slot:content>
@@ -12,7 +12,7 @@
                             <div class="-table-title-s1">
                                 <div class="-title">
                                     <p>Current order&apos;s description</p>
-                                    <h3>Orders&apos; ID</h3>
+                                    <h3>Orders ID: {{$order_description[0]->id}}</h3>
                                 </div>
                             </div>
                             <div class="-download">
@@ -73,65 +73,65 @@
                                 </div>
                             </div>
                         </div>
-{{--                        <div class="-table-content">--}}
-{{--                            {arr.map((value, i) => (--}}
-{{--                                <div class="-row">--}}
-{{--                                    <div class="-row-content">--}}
-{{--                                        <div class="item">--}}
-{{--                                            <p>{value}</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="amount">--}}
-{{--                                            <p>1</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="unit-price">--}}
-{{--                                            <p>$30.0</p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="price">--}}
-{{--                                            <p>$30.0</p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            ))}--}}
-{{--                        </div>--}}
-{{--                        <div class="-table-description-price">--}}
-{{--                            <div class="-total">--}}
-{{--                                <div class="-total-text">--}}
-{{--                                    <p>Original Total</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="-price">--}}
-{{--                                    <span>$</span>--}}
-{{--                                    <span>120.0</span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="-shipping">--}}
-{{--                                <div class="-shipping-text">--}}
-{{--                                    <p>Shipping</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="-price">--}}
-{{--                                    <span>$</span>--}}
-{{--                                    <span>10</span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="-sale">--}}
-{{--                                <div class="-sale-text">--}}
-{{--                                    <p>Voucher A (Free ship)</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="-price">--}}
-{{--                                    <span>-</span>--}}
-{{--                                    <span>$</span>--}}
-{{--                                    <span>10</span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="-total">--}}
-{{--                                <div class="-total-text">--}}
-{{--                                    <p>Total</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="-price">--}}
-{{--                                    <span>$</span>--}}
-{{--                                    <h3>120.0</h3>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <div class="-table-content">
+                            @foreach($order_details as $detail)
+                                <div class="-row">
+                                    <div class="-row-content">
+                                        <div class="item">
+                                            <p>{{$detail->name}}</p>
+                                        </div>
+                                        <div class="amount">
+                                            <p>{{$detail->quantity}}</p>
+                                        </div>
+                                        <div class="unit-price">
+                                            <p>{{$detail->unit_price}}</p>
+                                        </div>
+                                        <div class="price">
+                                            <p>${{$detail->price}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="-table-description-price">
+                            <div class="-total">
+                                <div class="-total-text">
+                                    <p>Original Total</p>
+                                </div>
+                                <div class="-price">
+                                    <span>$</span>
+                                    <span>{{$order_description[0]->price}}</span>
+                                </div>
+                            </div>
+                            <div class="-shipping">
+                                <div class="-shipping-text">
+                                    <p>Shipping</p>
+                                </div>
+                                <div class="-price">
+                                    <span>$</span>
+                                    <span>10</span>
+                                </div>
+                            </div>
+                            <div class="-sale">
+                                <div class="-sale-text">
+                                    <p>Voucher A (Free ship)</p>
+                                </div>
+                                <div class="-price">
+                                    <span>-</span>
+                                    <span>$</span>
+                                    <span>10</span>
+                                </div>
+                            </div>
+                            <div class="-total">
+                                <div class="-total-text">
+                                    <p>Total</p>
+                                </div>
+                                <div class="-price">
+                                    <span>$</span>
+                                    <h3>{{$order_description[0]->price}}</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </article>

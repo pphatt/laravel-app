@@ -15,8 +15,8 @@ class extends Migration {
             $table->string("first_name", 100)->nullable();
             $table->string("last_name", 100)->nullable();
             $table->unsignedSmallInteger("age")->nullable();
-            $table->string("address", 100);
-            $table->string("phone_number", 20);
+            $table->string("address", 100)->default("null");
+            $table->string("phone_number", 20)->default("null");
             $table->string("sex", 20)->nullable();
             $table->tinyInteger("is_admin")->default(0);
         });
