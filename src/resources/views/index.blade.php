@@ -1,4 +1,4 @@
-<x-default-layout title="Tune Source" is-scroll="false" :$products>
+<x-layouts.default-layout title="Tune Source" is-scroll="false" :$products>
     <x-slot:head>
         <link rel="stylesheet" href="{{ asset("css/index.css") }}" />
     </x-slot:head>
@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div>
-                        <a href="/" class="button shop-vinyls" data-btn-type="link">
+                        <a href="{{ route("home") }}" class="button shop-vinyls" data-btn-type="link">
                             Shop vinyls
                         </a>
                     </div>
@@ -42,7 +42,7 @@
                                 consequat ut minim.
                             </p>
                             <div class="section-content-b">
-                                <a href="/shop" class="button"
+                                <a href="{{route("shop")}}" class="button"
                                    data-btn-type="link">
                                     Start shopping
                                 </a>
@@ -88,4 +88,4 @@
             </section>
         </main>
     </x-slot:main>
-</x-default-layout>
+</x-layouts.default-layout>

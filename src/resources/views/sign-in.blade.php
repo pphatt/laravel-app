@@ -4,9 +4,55 @@
             <h1>Welcome back</h1>
             <h2>Sign in to your account</h2>
         </div>
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                <div class="alert">
+                    <div class="alert-panel">
+                    <span class="icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                        </svg>
+                    </span>
+                        <div class="alert-content">
+                            <div class="message">
+                                <span>{{ $error }}</span>
+                            </div>
+                            <div class="close-btn">
+                                <button>
+                                <span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="14"
+                                        height="14"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endif
         <div class="-auth-section">
             <div class="-form-layout">
-                <form>
+                <form method="POST" action="{{ route("login.post") }}">
+                    @csrf
                     <div class="-form-inner-layout">
                         <div class="-input-section">
                             <div class="-input-title">
@@ -16,12 +62,15 @@
                             </div>
                             <div class="-input">
                                 <div>
+                                    <label for="email"></label>
                                     <input
                                         id="email"
+                                        name="email"
                                         type="email"
                                         placeholder="name@example.com"
                                         autocomplete="email"
                                         autocapitalize="none"
+                                        required
                                     />
                                 </div>
                                 <p></p>
@@ -38,12 +87,15 @@
                             </div>
                             <div class="-input">
                                 <div>
+                                    <label for="password"></label>
                                     <input
                                         id="password"
+                                        name="password"
                                         type="password"
                                         placeholder="••••••••"
                                         autoComplete="email"
                                         autoCapitalize="none"
+                                        required
                                     />
                                 </div>
                                 <p></p>
@@ -103,7 +155,7 @@
             </div>
             <div class="-sign-up-section">
                 <span>Don&apos;t have an account?</span>
-                <a href="/sign-up">Sign Up Now</a>
+                <a href="{{ route("register") }}">Sign Up Now</a>
             </div>
         </div>
     </x-slot:form>

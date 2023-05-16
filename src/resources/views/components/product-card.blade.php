@@ -1,5 +1,3 @@
-@props(['visual','details'])
-
 <div class="-product-card-visual">
     <div class="photo">
         <figure class="is-default">

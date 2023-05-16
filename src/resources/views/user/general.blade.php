@@ -6,7 +6,7 @@
     <x-slot:content>
         <div class="-header-section">
             <section>
-                <h1>Yours User Name or Email</h1>
+                <h1>{{auth()->user()->name}}</h1>
             </section>
             <nav>
                 <div class="-nav-layout">
@@ -43,7 +43,7 @@
                                                     disabled
                                                     type="text"
                                                     readOnly
-                                                    value="OK!"
+                                                    value="{{auth()->user()->name}}"
                                                 />
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
                                                     disabled
                                                     type="text"
                                                     readOnly
-                                                    value="your-email@example.com"
+                                                    value="{{auth()->user()->email}}"
                                                 />
                                             </div>
                                         </div>

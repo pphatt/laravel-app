@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", [HomeController::class, "index"]);
+Route::get("/", [HomeController::class, "index"])->name("home");
 
-Route::get("/sign-in", function() {
-    return view("sign-in");
+Route::group(["middleware" => "auth"], function () {
+    Route::prefix("user")->group(function () {
+        Route::get("/general", function() {
+            return view("user.general");
+        })->name("user.general");
+    });
 });
 
-Route::get("/sign-up", function() {
-    return view("sign-up");
+Route::controller(AuthController::class)->group(function() {
+    Route::get("/sign-in", "login")->name("login");
+    Route::post("/sign-in", "handleLogin")->name("login.post");
+
+    Route::get("/sign-up", "register")->name("register");
+    Route::post("/sign-up", "handleRegister")->name("register.post");
+
+    Route::get("/logout", "handleLogout")->name("logout");
 });
 
-Route::get("/user/general", function() {
-   return view("user.general");
+Route::get("/shop", function() {})->name("shop");
+
+Route::fallback(function() {
+
 });

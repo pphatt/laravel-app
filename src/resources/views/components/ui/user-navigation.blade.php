@@ -25,7 +25,7 @@
                 </li>
                 <li>
                     <div class="-content">
-                        <a href="" class="-logout">
+                        <a href="{{route("logout")}}" class="-logout">
                             <div>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

@@ -28,7 +28,7 @@
         <div class="-nav-layout">
             <div class="-nav">
                 <div class="-inner-nav">
-                    <a href={"/"}>
+                    <a href="{{ route("home") }}">
                         <span class="-page-logo">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

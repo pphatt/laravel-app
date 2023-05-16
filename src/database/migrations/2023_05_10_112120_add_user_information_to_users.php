@@ -12,12 +12,12 @@ class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string("first_name", 100);
-            $table->string("last_name", 100);
-            $table->unsignedSmallInteger("age");
-            $table->string("address", 100);
-            $table->string("phone_number", 20);
-            $table->string("sex", 20);
+            $table->string("first_name", 100)->nullable();
+            $table->string("last_name", 100)->nullable();
+            $table->unsignedSmallInteger("age")->nullable();
+            $table->string("address", 100)->nullable();
+            $table->string("phone_number", 20)->nullable();
+            $table->string("sex", 20)->nullable();
             $table->tinyInteger("is_admin")->default(0);
         });
     }
