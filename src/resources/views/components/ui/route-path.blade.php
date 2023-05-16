@@ -1,11 +1,19 @@
 @php
-    $url = url()->full();
-    $url_parser = explode("/", $url);
+    $url_parser = explode("/", url()->full());
+    $url_path = [];
+
+    if ($url_parser[3] == "user") {
+        array_push($url_path, "user.general");
+
+        for ($i = 4; $i < count($url_parser); $i++) {
+            array_push($url_path, $url_parser[3] . "." . $url_parser[$i]);
+        }
+    }
 @endphp
 
 <div class="-bar">
     <div class="-route">
-        <a class="-home-route" href={"/"}>
+        <a class="-home-route" href="{{ route("home") }}">
             Tune Source
         </a>
         @for($i = 3; $i < count($url_parser); $i++)
@@ -25,7 +33,8 @@
                         <path d="M16 3.549L7.12 20.600"></path>
                     </svg>
                 </span>
-                <a class="-current-route" style="text-transform: capitalize">{{ $url_parser[$i] }}</a>
+                <a class="-current-route" style="text-transform: capitalize"
+                   href="{{ route($url_path[$i - 3]) }}">{{ $url_parser[$i] }}</a>
             </div>
         @endfor
     </div>
