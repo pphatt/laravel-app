@@ -1,0 +1,161 @@
+.-header-section section {
+  margin-top: 1rem;
+}
+.-header-section section h1 {
+  color: #ededed;
+}
+.-header-section nav {
+  margin-top: 12px;
+}
+.-header-section nav .-nav-layout {
+  width: 100%;
+}
+.-header-section nav .-nav-layout .-inner-nav-layout {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #282828;
+}
+.-header-section nav .-nav-layout .-inner-nav-layout button {
+  display: flex;
+  align-items: center;
+  color: #707070;
+  background-color: transparent;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.-header-section nav .-nav-layout .-inner-nav-layout button.-active {
+  color: #ededed;
+  border-bottom: 2px solid #ededed;
+}
+.-header-section nav .-nav-layout .-inner-nav-layout button:hover {
+  color: #ededed;
+}
+
+.-layout-1 {
+  margin-top: 1rem;
+  overflow: visible;
+}
+.-layout-1 .-inner-layout {
+  position: relative;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+}
+.-layout-1 .-inner-layout .-table-layout {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 100%;
+}
+
+.-table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-indent: 0;
+  border-color: inherit;
+}
+
+thead tr th {
+  color: #bbb;
+  background-color: #232323;
+  border-top: 1px solid #282828;
+  border-bottom: 1px solid #282828;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+thead tr th:first-child {
+  border-left: 1px solid #282828;
+  border-radius: 0.25rem 0 0 0;
+  padding-left: 1.5rem;
+}
+thead tr th:last-child {
+  border-right: 1px solid #282828;
+  border-radius: 0 0.25rem 0 0;
+  padding-right: 1.5rem;
+}
+
+tbody tr {
+  position: relative;
+  background-color: #1c1c1c;
+}
+tbody tr td {
+  color: #a0a0a0;
+  border-color: #282828;
+  border-style: solid;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 1px;
+  border-left-width: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+tbody tr td:first-child {
+  border-left-width: 1px;
+  padding-left: 1.5rem;
+}
+tbody tr td:last-child {
+  border-right-width: 1px;
+  padding-right: 1.5rem;
+}
+tbody tr td span {
+  color: #ededed;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+tbody tr td span.success {
+  color: #6ee7b7;
+}
+tbody tr td span.cancel {
+  color: #ffa7a3;
+}
+tbody tr td span.delay {
+  color: #ffd47d;
+}
+tbody tr .view {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #ededed;
+}
+tbody tr .view a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+tbody tr .view a p {
+  opacity: 0;
+  color: #ededed;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
+}
+tbody tr .view a:nth-child(n+2) {
+  margin-left: 10px;
+}
+tbody tr .view svg {
+  margin-left: 8px;
+  cursor: pointer;
+}
+tbody tr .view:hover a p {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=order.css.map */

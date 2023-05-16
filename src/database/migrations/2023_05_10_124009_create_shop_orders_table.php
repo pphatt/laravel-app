@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->bigIncrements("shop_order_id");
             $table->unsignedBigInteger("user_id");
             $table->dateTime("order_date");
+            $table->dateTime("received_date");
             $table->unsignedBigInteger("payment_method_id");
             $table->string("shipping_address", 100);
             $table->unsignedBigInteger("shipping_method_id");

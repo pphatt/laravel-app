@@ -18,7 +18,7 @@
                         <a href="{{route("user.billing")}}">
                             <span>Billing method</span>
                         </a>
-                        <a href="/user/order">
+                        <a href="{{route("user.order")}}">
                             <span>Order</span>
                         </a>
                     </div>

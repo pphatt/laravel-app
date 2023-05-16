@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
@@ -26,6 +27,8 @@ Route::group(["middleware" => "auth"], function () {
         Route::get("/billings", function () {
             return view("user.billing");
         })->name("user.billing");
+
+        Route::get("/order", [OrderController::class, "view"])->name("user.order");
     });
 });
 
