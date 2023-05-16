@@ -19,24 +19,31 @@ Route::get("/", [HomeController::class, "index"])->name("home");
 
 Route::group(["middleware" => "auth"], function () {
     Route::prefix("user")->group(function () {
-        Route::get("/general", function() {
+        Route::get("/general", function () {
             return view("user.general");
         })->name("user.general");
+
+        Route::get("/billings", function () {
+            return view("user.billing");
+        })->name("user.billing");
     });
 });
 
-Route::controller(AuthController::class)->group(function() {
-    Route::get("/sign-in", "login")->name("login");
-    Route::post("/sign-in", "handleLogin")->name("login.post");
+Route::controller(AuthController::class)->group(function () {
+    Route::group(["middleware" => "guest"], function () {
+        Route::get("/sign-in", "login")->name("login");
+        Route::post("/sign-in", "handleLogin")->name("login.post")->middleware("guest");
 
-    Route::get("/sign-up", "register")->name("register");
-    Route::post("/sign-up", "handleRegister")->name("register.post");
+        Route::get("/sign-up", "register")->name("register");
+        Route::post("/sign-up", "handleRegister")->name("register.post");
+    });
 
     Route::get("/logout", "handleLogout")->name("logout");
 });
 
-Route::get("/shop", function() {})->name("shop");
+Route::get("/shop", function () {
+})->name("shop");
 
-Route::fallback(function() {
+Route::fallback(function () {
 
 });

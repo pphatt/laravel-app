@@ -12,10 +12,10 @@
                         <span>Account</span>
                     </div>
                     <div class="-content">
-                        <a href="/user/general">
+                        <a href="{{route("user.general")}}">
                             <span>References</span>
                         </a>
-                        <a href="/user/billing">
+                        <a href="{{route("user.billing")}}">
                             <span>Billing method</span>
                         </a>
                         <a href="/user/order">
