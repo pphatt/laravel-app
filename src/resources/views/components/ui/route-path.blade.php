@@ -1,14 +1,28 @@
 @php
     $url_parser = explode("/", url()->full());
     $url_path = [];
+    $flag = 0;
 
     if ($url_parser[3] == "user") {
         array_push($url_path, "user.general");
 
-        for ($i = 4; $i < count($url_parser); $i++) {
+        if (count($url_path) == 5) {
+            array_push($url_path, "user.order_details" . "." . $url_parser[5]);
+            $flag++;
+        }
+
+        for ($i = 4; $i < count($url_parser) - $flag; $i++) {
             array_push($url_path, $url_parser[3] . "." . $url_parser[$i]);
         }
     }
+
+    /*
+     * user/general
+     * user/order
+     * user/order/1
+     *
+     *
+     * */
 @endphp
 
 <div class="-bar">

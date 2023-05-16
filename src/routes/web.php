@@ -29,6 +29,8 @@ Route::group(["middleware" => "auth"], function () {
         })->name("user.billing");
 
         Route::get("/order", [OrderController::class, "view"])->name("user.order");
+
+        Route::get("/order/{id}", [OrderController::class, "view_details"])->name("user.order_detail");
     });
 });
 

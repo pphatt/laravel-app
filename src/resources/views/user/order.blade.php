@@ -77,7 +77,7 @@
                                         <div class="view">
                                             <a
                                                 data-details={true}
-                                                href={"/details"}
+                                                href="{{ route("user.order_detail", ["id" => $order->id]) }}"
                                                 target={"_blank"}
                                             >
                                                 <p>View details</p>

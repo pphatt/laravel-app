@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             OrderStatusSeeder::class,
             ShopOrderSeeder::class,
             PromotionSeeder::class,
-            PromotionCategorySeeder::class
+            PromotionCategorySeeder::class,
+            ShopOrderDetailsSeeder::class,
         ]);
     }
 }
