@@ -32,11 +32,15 @@
                 <div class="-panel">
                     <x-ui.route-path />
 
-                    <div class="-main">
-                        <div class="-inner-main">
-                            {{ $content }}
+                    @if ($includeMainComponent == "true")
+                        <div class="-main">
+                            <div class="-inner-main">
+                                {{ $content }}
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        {{ $content }}
+                    @endif
                 </div>
             </div>
         </main>

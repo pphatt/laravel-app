@@ -26,6 +26,18 @@ class UserSeeder extends Seeder
                 "phone_number" => "0123456789",
                 "sex" => "Male",
                 "role" => 0
+            ],
+            [
+                "name" => "Laravel",
+                "email" => "name@gmail.com",
+                "password" => Hash::make("123"),
+                "first_name" => "laravel",
+                "last_name" => "laravel",
+                "age" => "20",
+                "address" => "Somewhere Q5",
+                "phone_number" => "0123456789",
+                "sex" => "Male",
+                "role" => 1
             ]
         ]);
     }

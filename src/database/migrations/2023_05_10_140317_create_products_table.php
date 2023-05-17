@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string("product_name", 100);
             $table->unsignedBigInteger("category_id");
             $table->string("description", 256);
+            $table->mediumText("price");
             $table->string("image_alt", 256);
             $table->mediumText("image_1")->nullable();
             $table->mediumText("image_2")->nullable();

@@ -22,7 +22,7 @@
                         <span>Manage</span>
                     </div>
                     <div class="-content">
-                        <a href="/admin/manage-account/">
+                        <a href="{{ route("admin.manage_account") }}">
                             <span>Manage Accounts</span>
                         </a>
                         <a href="/admin/manage-product">

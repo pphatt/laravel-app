@@ -40,7 +40,7 @@ class OrderController extends Controller
             ->get();
 
         $order_details = DB::table("shop_order_details")
-            ->select("products.product_name as name", "product_items.price as unit_price",
+            ->select("products.product_name as name", "products.price as unit_price",
                 "shop_order_details.quantity as quantity", "shop_order_details.price as price")
             ->join("product_items", "product_items.product_item_id", "=", "shop_order_details.product_item_id")
             ->join("shop_orders", "shop_orders.shop_order_id", "=", "shop_order_details.shop_order_id")

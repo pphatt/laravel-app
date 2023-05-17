@@ -1,4 +1,4 @@
-<x-layouts.account-layout title="General" route-name="General">
+<x-layouts.account-layout title="General" route-name="Details" includeMainComponent="true">
     <x-slot:head>
         <link rel="stylesheet" href="{{ asset("css/user/order_details.css")}}" />
     </x-slot:head>

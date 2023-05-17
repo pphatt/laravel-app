@@ -1,20 +1,20 @@
 <header class="header">
     <div @class(["main-navigator", "isScroll" => $isScroll]) id="main-navigator">
         <div class="navigator-left">
-            <x-button class="-shop-nav" id="-shop-nav" data-btn-type="default">
+            <a class="button -shop-nav" id="-shop-nav" data-btn-type="default" href="{{route("shop")}}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M5 12c0 3.859 3.14 7 7 7 3.859 0 7-3.141 7-7s-3.141-7-7-7c-3.86 0-7 3.141-7 7zm12 0c0 2.757-2.243 5-5 5s-5-2.243-5-5 2.243-5 5-5 5 2.243 5 5z"></path>
                 </svg>
                 Shop
-            </x-button>
-            <x-button class="-info-nav" id="-info-nav" data-btn-type="default">
+            </a>
+            <a class="button -info-nav" id="-info-nav" data-btn-type="default">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M5 12c0 3.859 3.14 7 7 7 3.859 0 7-3.141 7-7s-3.141-7-7-7c-3.86 0-7 3.141-7 7zm12 0c0 2.757-2.243 5-5 5s-5-2.243-5-5 2.243-5 5-5 5 2.243 5 5z"></path>
                 </svg>
                 Info
-            </x-button>
+            </a>
         </div>
         <div class="header-title">
             <div class="header-content-title">

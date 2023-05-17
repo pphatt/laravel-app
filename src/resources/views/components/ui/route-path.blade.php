@@ -2,11 +2,12 @@
     $url_parser = explode("/", url()->full());
     $url_path = [];
 
-    array_push($url_path, $url_parser[3].".general");
-
-    for ($i = 4; $i < count($url_parser); $i++) {
-        array_push($url_path, $url_parser[3] . "." . $url_parser[$i]);
-    }
+//    array_push($url_path, $url_parser[3].".general");
+//
+//    for ($i = 4; $i < count($url_parser); $i++) {
+//        array_push($url_path, $url_parser[3] . "." . $url_parser[$i]);
+//    }
+//dd([$url_parser])
     /*
      * user/general
      * user/order
@@ -38,13 +39,13 @@
                         <path d="M16 3.549L7.12 20.600"></path>
                     </svg>
                 </span>
-                @if ($i == 5)
-                    <a class="-current-route" style="text-transform: capitalize"
-                       href="{{ route("user.order_detail", ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>
-                @else
-                    <a class="-current-route" style="text-transform: capitalize"
-                       href="{{ route($url_path[$i - 3]) }}">{{ $url_parser[$i] }}</a>
-                @endif
+{{--                @if ($i == 5)--}}
+{{--                    <a class="-current-route" style="text-transform: capitalize"--}}
+{{--                       href="{{ route("user.order_detail", ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>--}}
+{{--                @else--}}
+{{--                    <a class="-current-route" style="text-transform: capitalize"--}}
+{{--                       href="{{ route($url_path[$i - 3]) }}">{{ $url_parser[$i] }}</a>--}}
+{{--                @endif--}}
             </div>
         @endfor
     </div>

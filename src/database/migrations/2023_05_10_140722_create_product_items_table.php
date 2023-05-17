@@ -15,7 +15,6 @@ return new class extends Migration
             $table->bigIncrements("product_item_id");
             $table->unsignedBigInteger("product_id");
             $table->unsignedInteger("quantity");
-            $table->mediumText("price");
         });
 
         Schema::table('product_items', function (Blueprint $table) {

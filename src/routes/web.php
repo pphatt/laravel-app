@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\user\OrderController;
 use App\Http\Controllers\user\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::group(["middleware" => ["auth", "role"]], function () {
 
     Route::prefix("admin")->group(function () {
         Route::get("/general", [AdminController::class, "general"])->name("admin.general");
+
+        Route::get("/manage-account", [AdminController::class, "manageAccount"])->name("admin.manage_account");
     });
 });
 
@@ -48,8 +51,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get("/logout", "handleLogout")->name("logout");
 });
 
-Route::get("/shop", function () {
-})->name("shop");
+Route::get("/shop", [ShopController::class, "view"])->name("shop");
 
 Route::fallback(function () {
 

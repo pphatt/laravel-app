@@ -36,7 +36,7 @@ class HomeController extends Controller
 
         $products = DB::table("products")
             ->select("products.product_name as name", "products.image_1 as default_image", "products.image_2 as hover_image",
-                "promotions.promotion_discount_rate as discount", "product_items.price as price")
+                "promotions.promotion_discount_rate as discount", "products.price as price")
             ->join("product_items", "products.product_id", "=", "product_items.product_id")
             ->leftJoin("promotions", function ($query) {
                 $query->join("promotion_categories", "promotions.promotion_id", "promotion_categories.promotion_id")
