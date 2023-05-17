@@ -36,7 +36,15 @@ class AdminController extends Controller
 
     public function productDetails($id)
     {
-        $products = DB::table("products")
+        $products_description = DB::table("products")
+            ->select("products.product_id as id", "products.product_name as name",
+                "categories.category_name as category", "products.description as description",
+                "products.image_1 as image_1", "products.image_2 as image_2")
+            ->join("categories", "categories.category_id", "=", "products.category_id")
+            ->where("products.product_id", "=", $id)
+            ->get();
+
+        $product_variants = DB::table("products")
             ->select("products.product_id as id", "products.product_name as name",
                 "categories.category_name as category", "variant_options.variant_option_name as variant", "products.description as description",
                 "products.price as price", "product_items.quantity as quantity", "products.artist_id as artist", "products.image_1 as image")
@@ -50,6 +58,6 @@ class AdminController extends Controller
             ->orderBy("id")
             ->get();
 
-        return view("admin.[slug-product]", ["products" => $products]);
+        return view("admin.[slug-product]", ["product_description" => $products_description, "product_variants" => $product_variants]);
     }
 }
