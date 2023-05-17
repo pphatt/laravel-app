@@ -14,30 +14,22 @@ class ProductVariantSeeder extends Seeder
     public function run(): void
     {
         DB::table("product_variants")->insert([
-//            [
-//                "variant_option_id" => 1,
-//                "product_item_id" => 2
-//            ],
-//            [
-//                "variant_option_id" => 4,
-//                "product_item_id" => 2
-//            ],
-//            [
-//                "variant_option_id" => 2,
-//                "product_item_id" => 3
-//            ],
-//            [
-//                "variant_option_id" => 3,
-//                "product_item_id" => 4
-//            ],
-//            [
-//                "variant_option_id" => 2,
-//                "product_item_id" => 5
-//            ],
-//            [
-//                "variant_option_id" => 4,
-//                "product_item_id" => 5
-//            ]
+            [
+                "variant_option_id" => 1,
+                "product_item_id" => 1
+            ],
+            [
+                "variant_option_id" => 4,
+                "product_item_id" => 1
+            ],
+            [
+                "variant_option_id" => 1,
+                "product_item_id" => 3
+            ],
+            [
+                "variant_option_id" => 4,
+                "product_item_id" => 3
+            ],
         ]);
     }
 }

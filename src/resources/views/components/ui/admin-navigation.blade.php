@@ -25,7 +25,7 @@
                         <a href="{{ route("admin.manage_account") }}">
                             <span>Manage Accounts</span>
                         </a>
-                        <a href="/admin/manage-product">
+                        <a href="{{ route("admin.manage_product") }}">
                             <span>Manage Products</span>
                         </a>
                         <a href="/admin/manage-music">
@@ -35,7 +35,7 @@
                 </li>
                 <li>
                     <div class="-content">
-                        <a href="" class="-logout">
+                        <a href="{{route("logout")}}" class="-logout">
                             <div>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
