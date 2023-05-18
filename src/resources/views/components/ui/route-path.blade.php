@@ -1,13 +1,33 @@
 @php
     $url_parser = explode("/", url()->full());
     $url_path = [];
+    $flag = 0;
 
-//    array_push($url_path, $url_parser[3].".general");
-//
-//    for ($i = 4; $i < count($url_parser); $i++) {
-//        array_push($url_path, $url_parser[3] . "." . $url_parser[$i]);
-//    }
-//dd([$url_parser])
+    array_push($url_path, $url_parser[3].".general");
+
+    for ($i = 4; $i < count($url_parser); $i++) {
+        if ($i == 5) {
+            if ($url_parser[$i - 1] == "manage-account") {
+                array_push($url_path, $url_parser[3] . "." . "account_details");
+            } else if ($url_parser[$i - 1] == "manage-product") {
+                array_push($url_path, $url_parser[3] . "." . "product_details");
+            }
+
+            continue;
+        }
+
+        if ($url_parser[$i] == "add-product") {
+            array_push($url_path, $url_parser[3] . "." . "add_product_get");
+        } else if ($url_parser[$i] == "edit-product") {
+            array_push($url_path, $url_parser[3] . "." . "edit_product_get");
+            $flag++;
+        } else if ($url_parser[$i] == "add-account") {
+            array_push($url_path, $url_parser[3] . "." . "add_user_get");
+        } else {
+            array_push($url_path, $url_parser[3] . "." . str_replace("-", "_", $url_parser[$i]));
+        }
+    }
+
     /*
      * user/general
      * user/order
@@ -22,7 +42,7 @@
         <a class="-home-route" href="{{ route("home") }}">
             Tune Source
         </a>
-        @for($i = 3; $i < count($url_parser); $i++)
+        @for($i = 3; $i < count($url_parser) - $flag; $i++)
             <div class="-sub-route">
                 <span>
                     <svg
@@ -39,13 +59,16 @@
                         <path d="M16 3.549L7.12 20.600"></path>
                     </svg>
                 </span>
-{{--                @if ($i == 5)--}}
-{{--                    <a class="-current-route" style="text-transform: capitalize"--}}
-{{--                       href="{{ route("user.order_detail", ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>--}}
-{{--                @else--}}
-{{--                    <a class="-current-route" style="text-transform: capitalize"--}}
-{{--                       href="{{ route($url_path[$i - 3]) }}">{{ $url_parser[$i] }}</a>--}}
-{{--                @endif--}}
+                @if ($i == 5)
+                    <a class="-current-route" style="text-transform: capitalize"
+                       href="{{ route($url_path[$i - 3], ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>
+                @elseif($url_parser[$i] == "edit-product")
+                    <a class="-current-route" style="text-transform: capitalize"
+                       href="{{ route($url_path[$i - 3], ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>
+                @else
+                    <a class="-current-route" style="text-transform: capitalize"
+                       href="{{ route($url_path[$i - 3]) }}">{{ $url_parser[$i] }}</a>
+                @endif
             </div>
         @endfor
     </div>
