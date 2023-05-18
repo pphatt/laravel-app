@@ -143,8 +143,8 @@
                                                 <p>Edit</p>
                                             </a>
                                             <a
-                                                data-details="{true}"
-                                                href="/details"
+                                                data-details="true"
+                                                href="{{route("admin.account_details", ["id" => $user->id])}}"
                                                 target="_blank"
                                             >
                                                 <p>View details</p>

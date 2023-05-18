@@ -36,6 +36,7 @@ Route::group(["middleware" => ["auth", "role"]], function () {
         Route::get("/general", [AdminController::class, "general"])->name("admin.general");
 
         Route::get("/manage-account", [AdminController::class, "account"])->name("admin.manage_account");
+        Route::get("/manage-account/{id}", [AdminController::class, "accountDetails"])->name("admin.account_details");
 
         Route::get("/manage-product", [AdminController::class, "product"])->name("admin.manage_product");
 

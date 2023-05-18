@@ -64,6 +64,16 @@ class AdminController extends Controller
         return view("admin.[slug-product]", ["product_description" => $products_description, "product_variants" => $product_variants]);
     }
 
+    public function accountDetails($id)
+    {
+        $user = DB::table("users")
+            ->select("id", "name", "email", "email_verified_at", "created_at", "updated_at", "first_name", "last_name", "age", "address", "phone_number", "sex", "role")
+            ->where("id", "=", $id)
+            ->get();
+
+        return view("admin.[slug-user]", ["user" => $user]);
+    }
+
     public function addProduct()
     {
         return view("admin.add-product");
