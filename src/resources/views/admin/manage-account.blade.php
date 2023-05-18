@@ -76,7 +76,7 @@
                             <span>Search</span>
                         </button>
                         <button>
-                            <span>Add new product</span>
+                            <span>Add new user</span>
                         </button>
                     </div>
                 </div>
