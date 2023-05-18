@@ -1,6 +1,8 @@
 <x-layouts.account-layout title="Manage Account" route-name="Manage Account" includeMainComponent="false">
     <x-slot:head>
         <link rel="stylesheet" href="{{ asset("css/admin/manage-account.css")}}" />
+
+        <script type="module" src="{{ asset("js/add-account.js")}}" defer></script>
     </x-slot:head>
 
     <x-slot:content>
@@ -72,12 +74,21 @@
                         </div>
                     </div>
                     <div class="-action-button-group">
-                        <button>
-                            <span>Search</span>
+                        <button onclick="redirect(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                 style="display: block; vertical-align: middle;">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span style="margin-left: 8px;">Add new user</span>
                         </button>
-                        <button>
-                            <span>Add new user</span>
-                        </button>
+
+                        <script>
+                            function redirect() {
+                                return window.location.href = window.location.protocol + "//" + window.location.hostname + ":8000" + "/admin/add-account"
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
@@ -115,14 +126,14 @@
                                         <span>{{$user->name}}</span>
                                     </td>
                                     <td>
-                                        <span>{{$user->age}}</span>
+                                        <span>{{empty($user->age) ? "-" : $user->age}}</span>
                                     </td>
                                     <td>
-                                        <span>{{$user->address}}</span>
+                                        <span>{{empty($user->address) || ($user->address == "null") ? "-" : $user->address}}</span>
                                     </td>
                                     <td>
                                         <div>
-                                            <span>{{$user->phone_number}}</span>
+                                            <span>{{empty($user->phone_number) || ($user->phone_number == "null") ? "-" : $user->phone_number}}</span>
                                         </div>
                                     </td>
                                     <td>
@@ -130,7 +141,7 @@
                                     </td>
                                     <td style="width: 170px">
                                         <div>
-                                            <span>{{date("M j, Y H:i", strtotime($user->created_at))}}</span>
+                                            <span>{{empty($user->created_at) ? "-" : date("M j, Y H:i", strtotime($user->created_at))}}</span>
                                         </div>
                                     </td>
                                     <td style="width: 200px">

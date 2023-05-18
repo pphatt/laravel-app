@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AddUserController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -44,6 +45,9 @@ Route::group(["middleware" => ["auth", "role"]], function () {
 
         Route::get("/add-product", [AdminController::class, "addProduct"])->name("admin.add_product_get");
         Route::post("/add-product", [AdminController::class, "handleAddProduct"])->name("admin.add_product_post");
+
+        Route::get("/add-account", [AddUserController::class, "view"])->name("admin.add_user_get");
+        Route::post("/add-account", [AddUserController::class, "handle"])->name("admin.add_user_post");
     });
 });
 
