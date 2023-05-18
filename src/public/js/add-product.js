@@ -12,24 +12,32 @@ class HandleUploadImage {
         this.setupEventListener();
     }
     setupEventListener() {
+        const card = document.querySelector(".-card");
+        const photo = card.lastElementChild;
         this.input_image_1.addEventListener("change", () => {
             const files = this.input_image_1.files;
             if (!files[0]) {
                 return;
             }
             this.image_1 = URL.createObjectURL(files[0]);
-            const showImageButton = document.querySelector("button[data-image='image_1']");
-            const card = document.querySelector(".-card");
-            const photo = card.lastElementChild;
-            showImageButton.removeAttribute("disabled");
-            showImageButton.addEventListener("click", () => {
-                if (showImageButton.getAttribute("data-state") === "false") {
-                    // @ts-ignore -> state management viewing photo
-                    document
-                        .querySelector("button[data-image='image_2']")
-                        .setAttribute("data-state", "false");
-                    showImageButton.setAttribute("data-state", "true");
-                    photo.innerHTML = `
+            // const showImageButton = document.querySelector(
+            //   "button[data-image='image_1']"
+            // ) as HTMLButtonElement
+            this.show_image_1.removeAttribute("disabled");
+        });
+        this.input_image_2.addEventListener("change", () => {
+            const files = this.input_image_2.files;
+            if (!files[0]) {
+                return;
+            }
+            this.image_2 = URL.createObjectURL(files[0]);
+            this.show_image_2.removeAttribute("disabled");
+        });
+        this.show_image_1.addEventListener("click", () => {
+            if (this.show_image_1.getAttribute("data-state") === "false") {
+                this.show_image_1.setAttribute("data-state", "true");
+                this.show_image_2.setAttribute("data-state", "false");
+                photo.innerHTML = `
             <section class="-view-photo-section">
               <div class="-inner-view-photo-section">
                 <div class="-view-photo-title">
@@ -41,35 +49,22 @@ class HandleUploadImage {
               </div>
             </section>
           `;
-                }
-                else {
-                    showImageButton.setAttribute("data-state", "false");
-                    photo.innerHTML = ``;
-                }
-            });
-        });
-        this.input_image_2.addEventListener("change", () => {
-            const files = this.input_image_2.files;
-            if (!files[0]) {
-                return;
             }
-            this.image_2 = URL.createObjectURL(files[0]);
-            const showImageButton = document.querySelector("button[data-image='image_2']");
-            const card = document.querySelector(".-card");
-            const photo = card.lastElementChild;
-            showImageButton.removeAttribute("disabled");
-            showImageButton.addEventListener("click", () => {
-                if (showImageButton.getAttribute("data-state") === "false") {
-                    // @ts-ignore -> state management viewing photo
-                    document
-                        .querySelector("button[data-image='image_1']")
-                        .setAttribute("data-state", "false");
-                    showImageButton.setAttribute("data-state", "true");
-                    photo.innerHTML = `
+            else {
+                this.show_image_1.setAttribute("data-state", "false");
+                photo.innerHTML = ``;
+            }
+        });
+        this.show_image_2.addEventListener("click", () => {
+            if (this.show_image_2.getAttribute("data-state") === "false") {
+                this.show_image_1.setAttribute("data-state", "false");
+                this.show_image_2.setAttribute("data-state", "true");
+                this.show_image_2.setAttribute("data-state", "true");
+                photo.innerHTML = `
             <section class="-view-photo-section">
               <div class="-inner-view-photo-section">
                 <div class="-view-photo-title">
-                  <h5>Photo 1</h5>
+                  <h5>Photo 2</h5>
                 </div>
                 <div class="-view-photo">
                   <img src="${this.image_2}" alt="" />
@@ -77,15 +72,12 @@ class HandleUploadImage {
               </div>
             </section>
           `;
-                }
-                else {
-                    showImageButton.setAttribute("data-state", "false");
-                    photo.innerHTML = ``;
-                }
-            });
+            }
+            else {
+                this.show_image_2.setAttribute("data-state", "false");
+                photo.innerHTML = ``;
+            }
         });
-        this.show_image_1.addEventListener("click", () => { });
-        this.show_image_2.addEventListener("click", () => { });
     }
 }
 class HandleCheckDetails {

@@ -105,7 +105,7 @@
                                             <div class="view">
                                                 <a
                                                     data-edit="true"
-                                                    href="/edit"
+                                                    href="{{route("admin.edit_product_get", ["id"=>$product->id])}}"
                                                     target="_blank"
                                                 >
                                                     <p>Edit</p>

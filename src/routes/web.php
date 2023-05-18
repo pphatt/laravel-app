@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\AddProductController;
 use App\Http\Controllers\admin\AddUserController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\EditProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
@@ -43,8 +45,11 @@ Route::group(["middleware" => ["auth", "role"]], function () {
 
         Route::get("/manage-product/{id}", [AdminController::class, "productDetails"])->name("admin.product_details");
 
-        Route::get("/add-product", [AdminController::class, "addProduct"])->name("admin.add_product_get");
-        Route::post("/add-product", [AdminController::class, "handleAddProduct"])->name("admin.add_product_post");
+        Route::get("/add-product", [AddProductController::class, "view"])->name("admin.add_product_get");
+        Route::post("/add-product", [AddProductController::class, "handle"])->name("admin.add_product_post");
+
+        Route::get("/edit-product/{id}", [EditProductController::class, "view"])->name("admin.edit_product_get");
+        Route::post("/edit-product/{id}", [EditProductController::class, "handle"])->name("admin.edit_product_post");
 
         Route::get("/add-account", [AddUserController::class, "view"])->name("admin.add_user_get");
         Route::post("/add-account", [AddUserController::class, "handle"])->name("admin.add_user_post");
