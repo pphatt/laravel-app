@@ -1,3 +1,5 @@
+@php use Illuminate\Support\Facades\Storage; @endphp
+
 <x-layouts.account-layout title="Manage Product" route-name="Manage Product" includeMainComponent="false">
     <x-slot:head>
         <link rel="stylesheet" href="{{ asset("css/admin/product-details.css")}}" />
@@ -20,7 +22,8 @@
                                         </div>
                                     </div>
                                     <div class="-view-image">
-                                        <button class="-view-image" data-image="1" data-state="false">View image 1</button>
+                                        <button class="-view-image" data-image="1" data-state="false">View image 1
+                                        </button>
                                         <div class="modal" data-image="1" style="display: none">
                                             <div class="back-drop"></div>
 
@@ -29,14 +32,15 @@
                                                     <div class="modal-head">Image viewing</div>
                                                     <div class="-view-photo">
                                                         <img
-                                                            src="{{ $product_description[0]->image_1 }}"
+                                                            src="{{ asset("storage/images/" . $product_description[0]->image_1) }}"
                                                             alt="" />
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <button class="-view-image" data-image="2" data-state="false">View image 2</button>
+                                        <button class="-view-image" data-image="2" data-state="false">View image 2
+                                        </button>
                                         <div class="modal" data-image="2" style="display: none">
                                             <div class="back-drop"></div>
 
@@ -45,7 +49,7 @@
                                                     <div class="modal-head">Image viewing</div>
                                                     <div class="-view-photo">
                                                         <img
-                                                            src="{{$product_description[0]->image_2}}"
+                                                            src="{{asset("storage/images/" . $product_description[0]->image_2)}}"
                                                             alt="" />
                                                     </div>
                                                 </div>
@@ -136,7 +140,8 @@
                                             <button data-state="false" data-pos="{{$product_variants[$i]->id}}">
                                                 <span>View Image</span>
                                             </button>
-                                            <div class="modal" data-pos="{{$product_variants[$i]->id}}" style="display: none">
+                                            <div class="modal" data-pos="{{$product_variants[$i]->id}}"
+                                                 style="display: none">
                                                 <div class="back-drop"></div>
 
                                                 <div class="modal-layout">

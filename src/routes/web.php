@@ -40,6 +40,9 @@ Route::group(["middleware" => ["auth", "role"]], function () {
         Route::get("/manage-product", [AdminController::class, "product"])->name("admin.manage_product");
 
         Route::get("/manage-product/{id}", [AdminController::class, "productDetails"])->name("admin.product_details");
+
+        Route::get("/add-product", [AdminController::class, "addProduct"])->name("admin.add_product_get");
+        Route::post("/add-product", [AdminController::class, "handleAddProduct"])->name("admin.add_product_post");
     });
 });
 

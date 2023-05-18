@@ -589,6 +589,19 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+.-table tbody tr td .no-product-message {
+  display: flex;
+  align-items: center;
+  opacity: 0.75;
+}
+.-table tbody tr td .no-product-message svg {
+  display: block;
+  vertical-align: middle;
+}
+.-table tbody tr td .no-product-message p {
+  color: #7e7e7e;
+  margin-left: 12px;
+}
 .-table tbody tr td:first-child {
   border-left-width: 1px;
   padding-left: 1.5rem;

@@ -16,10 +16,10 @@ return new class extends Migration {
             $table->unsignedBigInteger("category_id");
             $table->string("description", 256);
             $table->mediumText("price");
-            $table->string("image_alt", 256);
+            $table->string("image_alt", 256)->nullable();
             $table->mediumText("image_1")->nullable();
             $table->mediumText("image_2")->nullable();
-            $table->unsignedBigInteger("artist_id");
+            $table->unsignedBigInteger("artist_id")->default("2");
         });
 
         Schema::table("products", function (Blueprint $table) {

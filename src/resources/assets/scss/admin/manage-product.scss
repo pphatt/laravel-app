@@ -698,6 +698,22 @@
         font-size: 0.875rem;
         line-height: 1.25rem;
 
+        .no-product-message {
+          display: flex;
+          align-items: center;
+          opacity: 0.75;
+
+          svg {
+            display: block;
+            vertical-align: middle;
+          }
+
+          p {
+            color: #7e7e7e;
+            margin-left: 12px;
+          }
+        }
+
         &:first-child {
           border-left-width: 1px;
           padding-left: 1.5rem;
