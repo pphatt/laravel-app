@@ -1,4 +1,4 @@
-class Dropdown {
+class AddUserDropdown {
     private dropdown: NodeList
 
     constructor(elems: { dropdown: NodeList }) {
@@ -82,7 +82,7 @@ class Dropdown {
     }
 }
 
-const d = new Dropdown({
+const addUserDropdown = new AddUserDropdown({
     dropdown: document.querySelectorAll(
         ".-category-dropdown > button"
     ) as NodeList,

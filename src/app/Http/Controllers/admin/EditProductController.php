@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 class EditProductController extends Controller
@@ -60,13 +61,6 @@ class EditProductController extends Controller
                 "quantity" => $request->get('quantity'),
             ]);
 
-        $products = DB::table("products")
-            ->select("products.product_id as id", "products.product_name as name",
-                "categories.category_name as category", "products.description as description", "products.price as price")
-            ->join("categories", "categories.category_id", "=", "products.category_id")
-            ->orderBy("id")
-            ->get();
-
-        return view("admin.manage-product", ["products" => $products])->with("success", "Edit product successfully");
+        return redirect()->route("admin.manage_product")->with("edit", "Edit product successfully");
     }
 }

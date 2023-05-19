@@ -1,5 +1,5 @@
 @php
-    $url_parser = explode("/", url()->full());
+    $url_parser = explode("/", explode("?", url()->full())[0]);
     $url_path = [];
     $flag = 0;
 
@@ -64,13 +64,13 @@
                 </span>
                 @if ($i == 5)
                     <a class="-current-route" style="text-transform: capitalize"
-                       href="{{ route($url_path[$i - 3], ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>
+                       href="{{ route($url_path[$i - 3], ["id" => $url_parser[5]]) }}">{{ str_replace("-", " ", $url_parser[$i]) }}</a>
                 @elseif($url_parser[$i] == "edit-product" || $url_parser[$i] == "edit-account")
                     <a class="-current-route" style="text-transform: capitalize"
-                       href="{{ route($url_path[$i - 3], ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>
+                       href="{{ route($url_path[$i - 3], ["id" => $url_parser[5]]) }}">{{ str_replace("-", " ", $url_parser[$i]) }}</a>
                 @else
                     <a class="-current-route" style="text-transform: capitalize"
-                       href="{{ route($url_path[$i - 3]) }}">{{ $url_parser[$i] }}</a>
+                       href="{{ route($url_path[$i - 3]) }}">{{ str_replace("-", " ", $url_parser[$i]) }}</a>
                 @endif
             </div>
         @endfor

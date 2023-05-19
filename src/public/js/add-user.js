@@ -1,5 +1,5 @@
 "use strict";
-class Dropdown {
+class AddUserDropdown {
     constructor(elems) {
         const { dropdown } = elems;
         this.dropdown = dropdown;
@@ -60,7 +60,7 @@ class Dropdown {
         });
     }
 }
-const d = new Dropdown({
+const addUserDropdown = new AddUserDropdown({
     dropdown: document.querySelectorAll(".-category-dropdown > button"),
 });
 // async function fetchTest() {

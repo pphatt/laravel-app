@@ -693,6 +693,8 @@
 }
 
 .modal-head {
+  display: flex;
+  justify-content: flex-start;
   color: #ededed;
   background-color: #282828;
   border-bottom: 1px solid #2e2e2e;

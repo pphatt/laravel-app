@@ -36,11 +36,6 @@ class EditAccountController extends Controller
                 "role" => ($request->get("role") == "user") ? "0" : "1",
             ]);
 
-        $users = DB::table("users")
-            ->select("users.id as id", "users.role as role", "users.email as email", "users.name as name", "users.age as age",
-                "users.address as address", "users.phone_number as phone_number", "users.sex as sex", "users.created_at as created_at", "users.state as state")
-            ->get();
-
-        return view("admin.manage-account", ["users" => $users])->with("success", "Edit Account Successfully");
+        return redirect()->route("admin.manage_account")->with("edit", "Edit Account Successfully");
     }
 }
