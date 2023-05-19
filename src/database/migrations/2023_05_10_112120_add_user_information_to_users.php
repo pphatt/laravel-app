@@ -14,10 +14,11 @@ class extends Migration {
         Schema::table('users', function (Blueprint $table) {
             $table->string("first_name", 100)->nullable();
             $table->string("last_name", 100)->nullable();
+            $table->string("sex", 20)->nullable();
             $table->unsignedSmallInteger("age")->nullable();
             $table->string("address", 100)->default("null");
             $table->string("phone_number", 20)->default("null");
-            $table->string("sex", 20)->nullable();
+            $table->mediumText("image")->nullable();
             $table->tinyInteger("role")->default(0);
             $table->tinyInteger("state")->default(0);
         });

@@ -48,7 +48,8 @@
                                                             <span class="-text">
                                                                 <span
                                                                     style="font-size: 0.875rem; line-height: 1.25rem;">{{$product[0]->category}}</span>
-                                                                <input hidden name="category" value="{{$product[0]->category}}" required />
+                                                                <input hidden name="category"
+                                                                       value="{{$product[0]->category}}" required />
                                                             </span>
                                                             <span class="-svg">
                                                                 <svg
@@ -128,7 +129,7 @@
                                                                    src="{{asset("storage/images/" . $product[0]->image_1)}}"
                                                                    hidden />
                                                             <input id="photo_1" type="file" name="image_1"
-                                                                   accept="image/png, image/jpg" />
+                                                                   accept="image/png, image/jpg, image/jpeg" />
                                                             <label for="photo_1" class="photo">
                                                                 Upload Photo
                                                             </label>
@@ -164,7 +165,7 @@
                                                                    hidden />
 
                                                             <input id="photo_2" type="file" name="image_2"
-                                                                   accept="image/png, image/jpg" />
+                                                                   accept="image/png, image/jpg, image/jpeg" />
 
                                                             <label for="photo_2" class="photo">
                                                                 Upload Photo

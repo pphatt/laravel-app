@@ -5,13 +5,14 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserProfileController extends Controller
 {
     public function view()
     {
         $user = DB::table('users')
-            ->select("name", "first_name", "last_name", "age", "address", "phone_number", "sex")
+            ->select("name", "first_name", "last_name", "age", "address", "phone_number", "sex", "image")
             ->where("id", "=", auth()->user()->id)
             ->get();
 
@@ -35,6 +36,16 @@ class UserProfileController extends Controller
             "phone_number.numeric" => "Phone number contains only digits",
         ]);
 
+        $image = "";
+        $image_path = "";
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image_path = time();
+
+            Storage::disk('local')->put('public/images/' . $image_path, $image, 'public');
+        }
+
         DB::table("users")
             ->where("id", "=", auth()->user()->id)
             ->limit(1)
@@ -46,6 +57,7 @@ class UserProfileController extends Controller
                 "address" => $request->get("address"),
                 "phone_number" => $request->get("phone_number"),
                 "sex" => $request->get("sex"),
+                "image" => $request->hasFile('image') ? $image_path . "/" . $image->hashName() : $request->get("old_image"),
             ]);
 
         return redirect()->route("user.profile_get")->with("profile", "Edit profile successfully");

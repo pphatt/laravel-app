@@ -1,6 +1,8 @@
 <x-layouts.account-layout title="Profile" route-name="Profile" includeMainComponent="true">
     <x-slot:head>
         <link rel="stylesheet" href="{{ asset("css/user/profile.css")}}" />
+
+        <script type="module" src="{{ asset("js/user-profile.js")}}" defer></script>
     </x-slot:head>
 
     <x-slot:content>
@@ -117,7 +119,8 @@
                             </div>
                         </div>
                         <div class="-table-content">
-                            <form method="POST" action="{{ route("user.profile_post") }}" class="-form">
+                            <form method="POST" action="{{ route("user.profile_post") }}" class="-form"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 <div class="-inner-table-content">
                                     <div class="-content">
@@ -219,17 +222,25 @@
                                             <div class="-content-input">
                                                 <div style="display: flex; align-items: center; gap: 8px">
                                                     <div style="display: flex; align-items: center">
-                                                        <input id="photo" type="file" />
-                                                        <label for="photo" class="photo">
-                                                            Upload Photo
+                                                        <input id="old_image" type="file"
+                                                               value="{{asset("storage/images/" . $user[0]->image)}}"
+                                                               hidden />
+                                                        <input id="image" type="file" name="image"
+                                                               accept="image/png, image/jpg, image/jpeg" />
+
+                                                        <label for="image" class="photo">
+                                                            Upload Image
                                                         </label>
                                                     </div>
-                                                    <div style="display: flex; align-items: center; gap: 8px">
-                                                        <button type="button">
-                                                            <span>View Old Photo</span>
+                                                    <div class="view-photo-btn-group"
+                                                         style="display: flex; align-items: center; gap: 8px">
+                                                        <button
+                                                            {{empty($user[0]->image) ? "disabled" : null}} type="button"
+                                                            data-state="false">
+                                                            <span>View Old Image</span>
                                                         </button>
-                                                        <button disabled type="button">
-                                                            <span>View New Photo</span>
+                                                        <button disabled type="button" data-state="false">
+                                                            <span>View New Image</span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -246,6 +257,7 @@
                     </div>
                 </section>
             </article>
+            <div></div>
         </div>
     </x-slot:content>
 </x-layouts.account-layout>
