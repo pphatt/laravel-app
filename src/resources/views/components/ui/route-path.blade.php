@@ -26,6 +26,8 @@
             $flag++;
         } else if ($url_parser[$i] == "add-account") {
             array_push($url_path, $url_parser[3] . "." . "add_user_get");
+        } else if ($url_parser[$i] == "profile" && $url_parser[3] == "user") {
+            array_push($url_path, $url_parser[3] . "." . "profile_get");
         } else {
             array_push($url_path, $url_parser[3] . "." . str_replace("-", "_", $url_parser[$i]));
         }

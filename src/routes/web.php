@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\user\OrderController;
 use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,9 @@ Route::get("/", [HomeController::class, "index"])->name("home");
 Route::group(["middleware" => ["auth", "role"]], function () {
     Route::prefix("user")->group(function () {
         Route::get("/general", [UserController::class, "general"])->name("user.general");
+
+        Route::get("/profile", [UserProfileController::class, "view"])->name("user.profile_get");
+        Route::post("/profile", [UserProfileController::class, "handle"])->name("user.profile_post");
 
         Route::get("/billings", [UserController::class, "billing"])->name("user.billing");
 

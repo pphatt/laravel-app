@@ -14,9 +14,15 @@
                         <button class="-active">
                             <span>General</span>
                         </button>
-                        <button>
+                        <button onclick="redirect()">
                             <span>Profile</span>
                         </button>
+
+                        <script>
+                            function redirect() {
+                                return window.location.href = window.location.protocol + "//" + window.location.hostname + ":8000" + "/user/profile"
+                            }
+                        </script>
                     </div>
                 </div>
             </nav>
