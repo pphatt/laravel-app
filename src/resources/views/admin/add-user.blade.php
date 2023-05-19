@@ -51,7 +51,7 @@
                         <div class="-card-layout">
                             <div class="-card-header">
                                 <div class="-text">
-                                    <h5>Add new product</h5>
+                                    <h5>Add new user</h5>
                                 </div>
                             </div>
                             <div class="-card-content">

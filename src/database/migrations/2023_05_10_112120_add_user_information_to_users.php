@@ -19,6 +19,7 @@ class extends Migration {
             $table->string("phone_number", 20)->default("null");
             $table->string("sex", 20)->nullable();
             $table->tinyInteger("role")->default(0);
+            $table->tinyInteger("state")->default(0);
         });
     }
 

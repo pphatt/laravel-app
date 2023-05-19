@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->mediumText("image_1")->nullable();
             $table->mediumText("image_2")->nullable();
             $table->unsignedBigInteger("artist_id")->default("2");
+            $table->tinyInteger("state")->default("0");
         });
 
         Schema::table("products", function (Blueprint $table) {

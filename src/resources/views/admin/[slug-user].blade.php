@@ -1,4 +1,4 @@
-<x-layouts.account-layout title="Manage Product" route-name="Manage Product" includeMainComponent="false">
+<x-layouts.account-layout title="Manage User" route-name="Manage User" includeMainComponent="false">
     <x-slot:head>
         <link rel="stylesheet" href="{{ asset("css/admin/user-details.css")}}" />
     </x-slot:head>

@@ -106,77 +106,99 @@
                                 <th>Address</th>
                                 <th>Phone number</th>
                                 <th>Sex</th>
+                                <th>State</th>
                                 <th>Created</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
+                            @if (count($users) > 0)
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td>
+                                            <span>{{str_pad($user->id, 7 - strlen($user->id), "0", STR_PAD_LEFT)}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{($user->role == "1") ? "Admin" : "User"}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{$user->email}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{$user->name}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{empty($user->age) ? "-" : $user->age}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{empty($user->address) || ($user->address == "null") ? "-" : $user->address}}</span>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <span>{{empty($user->phone_number) || ($user->phone_number == "null") ? "-" : $user->phone_number}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span>{{ $user->sex }}</span>
+                                        </td>
+                                        <td>
+                                            <span class="status"
+                                                  data-status="{{$user->state}}">{{($user->state == 0) ? "Active" : "Deleted"}}</span>
+                                        </td>
+                                        <td style="width: 170px">
+                                            <div>
+                                                <span>{{empty($user->created_at) ? "-" : date("M j, Y H:i", strtotime($user->created_at))}}</span>
+                                            </div>
+                                        </td>
+                                        <td style="width: 200px">
+                                            <div class="view">
+                                                <a
+                                                    data-edit="true"
+                                                    href="{{route("admin.edit_account_get", ["id" => $user->id])}}"
+                                                    target="_blank"
+                                                >
+                                                    <p>Edit</p>
+                                                </a>
+                                                <a
+                                                    data-details="true"
+                                                    href="{{route("admin.account_details", ["id" => $user->id])}}"
+                                                    target="_blank"
+                                                >
+                                                    <p>View details</p>
+                                                </a>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="21"
+                                                    height="21"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                >
+                                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                                </svg>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
                                 <tr>
-                                    <td>
-                                        <span>{{str_pad($user->id, 7 - strlen($user->id), "0", STR_PAD_LEFT)}}</span>
-                                    </td>
-                                    <td>
-                                        <span>{{($user->role == "1") ? "Admin" : "User"}}</span>
-                                    </td>
-                                    <td>
-                                        <span>{{$user->email}}</span>
-                                    </td>
-                                    <td>
-                                        <span>{{$user->name}}</span>
-                                    </td>
-                                    <td>
-                                        <span>{{empty($user->age) ? "-" : $user->age}}</span>
-                                    </td>
-                                    <td>
-                                        <span>{{empty($user->address) || ($user->address == "null") ? "-" : $user->address}}</span>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <span>{{empty($user->phone_number) || ($user->phone_number == "null") ? "-" : $user->phone_number}}</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span>{{ $user->sex }}</span>
-                                    </td>
-                                    <td style="width: 170px">
-                                        <div>
-                                            <span>{{empty($user->created_at) ? "-" : date("M j, Y H:i", strtotime($user->created_at))}}</span>
-                                        </div>
-                                    </td>
-                                    <td style="width: 200px">
-                                        <div class="view">
-                                            <a
-                                                data-edit="true"
-                                                href="/edit"
-                                                target="_blank"
-                                            >
-                                                <p>Edit</p>
-                                            </a>
-                                            <a
-                                                data-details="true"
-                                                href="{{route("admin.account_details", ["id" => $user->id])}}"
-                                                target="_blank"
-                                            >
-                                                <p>View details</p>
-                                            </a>
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="21"
-                                                height="21"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="9 18 15 12 9 6"></polyline>
+                                    <td colspan="10">
+                                        <div class="no-account-message">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
                                             </svg>
+                                            <p>No users in database</p>
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>

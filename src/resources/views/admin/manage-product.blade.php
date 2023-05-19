@@ -79,6 +79,7 @@
                                 <th>Category</th>
                                 <th>Description</th>
                                 <th>Price</th>
+                                <th>State</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -100,6 +101,10 @@
                                         </td>
                                         <td>
                                             <span>${{(str_contains($product->price, ".")) ? $product->price : number_format((float)$product->price, 2, ".", "")}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="status"
+                                                  data-status="{{$product->state}}">{{($product->state == 0) ? "-" : "Deleted"}}</span>
                                         </td>
                                         <td style="width: 200px">
                                             <div class="view">

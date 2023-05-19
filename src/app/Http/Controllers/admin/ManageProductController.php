@@ -3,18 +3,23 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
-class AdminController extends Controller
+class ManageProductController extends Controller
 {
-    public function general()
+    public function view()
     {
-        return view("admin.general");
+        $products = DB::table("products")
+            ->select("products.product_id as id", "products.product_name as name",
+                "categories.category_name as category", "products.description as description", "products.price as price", "products.state")
+            ->join("categories", "categories.category_id", "=", "products.category_id")
+            ->orderBy("id")
+            ->get();
+
+        return view("admin.manage-product", ["products" => $products]);
     }
 
-    public function productDetails($id)
+    public function view_details($id)
     {
         $products_description = DB::table("products")
             ->select("products.product_id as id", "products.product_name as name",

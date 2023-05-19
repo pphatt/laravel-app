@@ -21,6 +21,9 @@
         } else if ($url_parser[$i] == "edit-product") {
             array_push($url_path, $url_parser[3] . "." . "edit_product_get");
             $flag++;
+        } else if ($url_parser[$i] == "edit-account") {
+            array_push($url_path, $url_parser[3] . "." . "edit_account_get");
+            $flag++;
         } else if ($url_parser[$i] == "add-account") {
             array_push($url_path, $url_parser[3] . "." . "add_user_get");
         } else {
@@ -62,7 +65,7 @@
                 @if ($i == 5)
                     <a class="-current-route" style="text-transform: capitalize"
                        href="{{ route($url_path[$i - 3], ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>
-                @elseif($url_parser[$i] == "edit-product")
+                @elseif($url_parser[$i] == "edit-product" || $url_parser[$i] == "edit-account")
                     <a class="-current-route" style="text-transform: capitalize"
                        href="{{ route($url_path[$i - 3], ["id" => $url_parser[5]]) }}">{{ $url_parser[$i] }}</a>
                 @else

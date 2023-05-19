@@ -1,4 +1,4 @@
-<x-layouts.account-layout title="Manage Account" route-name="Manage Account" includeMainComponent="false">
+<x-layouts.account-layout title="Manage Product" route-name="Manage Product" includeMainComponent="false">
     <x-slot:head>
         <link rel="stylesheet" href="{{ asset("css/admin/edit-product.css")}}" />
 
@@ -13,7 +13,7 @@
                         <div class="-card-layout">
                             <div class="-card-header">
                                 <div class="-text">
-                                    <h5>Add new product</h5>
+                                    <h5>Edit Product</h5>
                                 </div>
                             </div>
                             <div class="-card-content">

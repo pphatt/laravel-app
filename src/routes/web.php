@@ -3,7 +3,10 @@
 use App\Http\Controllers\admin\AddProductController;
 use App\Http\Controllers\admin\AddUserController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\EditAccountController;
 use App\Http\Controllers\admin\EditProductController;
+use App\Http\Controllers\admin\ManageAccountController;
+use App\Http\Controllers\admin\ManageProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
@@ -38,20 +41,23 @@ Route::group(["middleware" => ["auth", "role"]], function () {
     Route::prefix("admin")->group(function () {
         Route::get("/general", [AdminController::class, "general"])->name("admin.general");
 
-        Route::get("/manage-account", [AdminController::class, "account"])->name("admin.manage_account");
-        Route::get("/manage-account/{id}", [AdminController::class, "accountDetails"])->name("admin.account_details");
+        Route::get("/manage-account", [ManageAccountController::class, "view"])->name("admin.manage_account");
+        Route::get("/manage-account/{id}", [ManageAccountController::class, "view_details"])->name("admin.account_details");
 
-        Route::get("/manage-product", [AdminController::class, "product"])->name("admin.manage_product");
-        Route::get("/manage-product/{id}", [AdminController::class, "productDetails"])->name("admin.product_details");
+        Route::get("/add-account", [AddUserController::class, "view"])->name("admin.add_user_get");
+        Route::post("/add-account", [AddUserController::class, "handle"])->name("admin.add_user_post");
+
+        Route::get("/edit-account/{id}", [EditAccountController::class, "view"])->name("admin.edit_account_get");
+        Route::post("/edit-account/{id}", [EditAccountController::class, "handle"])->name("admin.edit_account_post");
+
+        Route::get("/manage-product", [ManageProductController::class, "view"])->name("admin.manage_product");
+        Route::get("/manage-product/{id}", [ManageProductController::class, "view_details"])->name("admin.product_details");
 
         Route::get("/add-product", [AddProductController::class, "view"])->name("admin.add_product_get");
         Route::post("/add-product", [AddProductController::class, "handle"])->name("admin.add_product_post");
 
         Route::get("/edit-product/{id}", [EditProductController::class, "view"])->name("admin.edit_product_get");
         Route::post("/edit-product/{id}", [EditProductController::class, "handle"])->name("admin.edit_product_post");
-
-        Route::get("/add-account", [AddUserController::class, "view"])->name("admin.add_user_get");
-        Route::post("/add-account", [AddUserController::class, "handle"])->name("admin.add_user_post");
     });
 });
 

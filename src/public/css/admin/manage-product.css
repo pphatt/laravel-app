@@ -618,6 +618,23 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+.-table tbody tr td span.status {
+  margin: 0 0.2em;
+  padding: 0.2em 0.4em 0.1em;
+  background: hsla(0, 0%, 59%, 0.1);
+  border: 1px solid hsla(0, 0%, 39%, 0.2);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.-table tbody tr td span.status[data-status="0"] {
+  background-color: #40bf86;
+  border-color: #40bf86;
+}
+.-table tbody tr td span.status[data-status="1"] {
+  color: #fbfcfd;
+  background-color: #e5484d;
+  border-color: #e5484d;
+}
 .-table tbody tr .view {
   display: flex;
   align-items: center;

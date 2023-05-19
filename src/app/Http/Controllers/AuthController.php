@@ -16,12 +16,12 @@ class AuthController extends Controller
 
     public function handleLogin(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(["email" => $request->get("email"), "password" => $request->get("password"), "state" => 0])) {
             $request->session()->regenerate();
 
             return redirect()->intended(route("home"));
@@ -55,7 +55,8 @@ class AuthController extends Controller
         return redirect(route("login"));
     }
 
-    public function handleLogout(Request $request) {
+    public function handleLogout(Request $request)
+    {
         Auth::logout();
 
         $request->session()->invalidate();
@@ -64,7 +65,8 @@ class AuthController extends Controller
         return redirect(route("home"));
     }
 
-    public function handleRole() {
+    public function handleRole()
+    {
         if (Auth::user()->role == 1) {
             return redirect(route("admin.general"));
         } else {
