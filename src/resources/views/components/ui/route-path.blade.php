@@ -11,6 +11,8 @@
                 array_push($url_path, $url_parser[3] . "." . "account_details");
             } else if ($url_parser[$i - 1] == "manage-product") {
                 array_push($url_path, $url_parser[3] . "." . "product_details");
+            } else if ($url_parser[$i - 1] == "order") {
+                array_push($url_path, $url_parser[3] . "." . "order_detail");
             }
 
             continue;

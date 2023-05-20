@@ -106,8 +106,8 @@
                                         <span>
                                             {{$product_variants[$i]->name}}
                                             @if (!empty($product_variants[0]->variant))
-                                                (Color: {{$product_variants[$i]->variant}},
-                                                Size: {{$product_variants[$i + 1]->variant}}
+                                                (Color: {{$product_variants[$i + 1]->variant}},
+                                                Size: {{$product_variants[$i]->variant}}
                                                 )
                                             @endif
                                         </span>
@@ -117,10 +117,10 @@
                                     </td>
                                     @if (!empty($product_variants[0]->variant))
                                         <td>
-                                            <span>{{$product_variants[$i]->variant}}</span>
+                                            <span>{{$product_variants[$i + 1]->variant}}</span>
                                         </td>
                                         <td>
-                                            <span>{{$product_variants[$i + 1]->variant}}</span>
+                                            <span>{{$product_variants[$i]->variant}}</span>
                                         </td>
                                     @endif
                                     @if (!empty($product_variants[0]->variant))
