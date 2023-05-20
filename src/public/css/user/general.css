@@ -36,13 +36,13 @@
   color: #ededed;
 }
 
-.-table {
+.-card {
   margin: 1rem 0;
 }
-.-table .-inner-table {
+.-card .-inner-card {
   max-width: 56rem;
 }
-.-table .-inner-table section .-table-layout {
+.-card .-inner-card section .-card-layout {
   border: 1px solid #282828;
   border-radius: 0.375rem;
   overflow: hidden;
@@ -50,29 +50,29 @@
   box-shadow: 0 0 #000000, 0 0 #000000, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.-table-header {
+.-card-header {
   background-color: #232323;
   border-bottom: 1px solid #282828;
 }
-.-table-header div {
+.-card-header div {
   display: flex;
   align-items: center;
   padding: 1rem 1.5rem;
 }
-.-table-header div h5 {
+.-card-header div h5 {
   color: #ededed;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 }
 
-.-table-content {
+.-card-content {
   background-color: #232323;
 }
-.-table-content .-inner {
+.-card-content .-inner {
   padding: 1rem 1.5rem;
 }
-.-table-content .-inner .-inner-table-content {
+.-card-content .-inner .-inner-card-content {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -175,12 +175,12 @@
   padding: 1rem 1.5rem;
 }
 
-.-card {
+.-delete-account-card {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.-card .-inner-card {
+.-delete-account-card .-inner-delete-account-card {
   display: flex;
   gap: 16px;
   background-color: #1f1315;
@@ -188,38 +188,38 @@
   padding: 1rem 1.5rem;
   border-radius: 0.375rem;
 }
-.-card .-inner-card .-svg {
+.-delete-account-card .-inner-delete-account-card .-svg {
   color: #e5484d;
 }
-.-card .-inner-card .-svg svg {
+.-delete-account-card .-inner-delete-account-card .-svg svg {
   display: block;
   vertical-align: middle;
 }
-.-card .-inner-card .-content {
+.-delete-account-card .-inner-delete-account-card .-content {
   display: flex;
   align-items: center;
   flex: 1;
 }
-.-card .-inner-card .-content div h3 {
+.-delete-account-card .-inner-delete-account-card .-content div h3 {
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.25rem;
   margin-bottom: 0.25rem;
 }
-.-card .-inner-card .-content div h3 span {
+.-delete-account-card .-inner-delete-account-card .-content div h3 span {
   color: #e5484d;
 }
-.-card .-inner-card .-content div div {
+.-delete-account-card .-inner-delete-account-card .-content div div {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.-card .-inner-card .-content div div p {
+.-delete-account-card .-inner-delete-account-card .-content div div p {
   color: #e5484d;
 }
-.-card .-inner-card .-content div div div {
+.-delete-account-card .-inner-delete-account-card .-content div div div {
   margin-top: 0.5rem;
 }
-.-card .-inner-card .-content div div div button {
+.-delete-account-card .-inner-delete-account-card .-content div div div button {
   display: inline-flex;
   align-items: center;
   color: #ff6369;
@@ -235,12 +235,12 @@
   cursor: pointer;
   transition: all 150ms cubic-bezier(0, 0, 0.2, 1);
 }
-.-card .-inner-card .-content div div div button span {
+.-delete-account-card .-inner-delete-account-card .-content div div div button span {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.-card .-inner-card .-content div div div button:hover {
+.-delete-account-card .-inner-delete-account-card .-content div div div button:hover {
   color: #fbfcfd;
   background-color: #e5484d;
   border-color: #e5484d;

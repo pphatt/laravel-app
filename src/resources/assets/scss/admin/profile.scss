@@ -76,7 +76,7 @@
   background-color: #232323;
   border-bottom: 1px solid #282828;
 
-  div {
+  .-text {
     text-align: left;
     flex: 1;
 
@@ -85,6 +85,24 @@
       font-size: 16px;
       line-height: 24px;
       font-weight: 400;
+    }
+  }
+
+  .-role {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      color: white;
+      background-color: #2b825b;
+      border: 1px solid #40bf86;
+      border-radius: 0.25rem;
+
+      padding: 0.25rem 0.625rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      text-align: center;
     }
   }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AddProductController;
 use App\Http\Controllers\admin\AddUserController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Controllers\admin\DeleteAccountController;
 use App\Http\Controllers\admin\DeleteProductController;
 use App\Http\Controllers\admin\EditAccountController;
@@ -46,6 +47,9 @@ Route::group(["middleware" => ["auth", "role"]], function () {
 
     Route::prefix("admin")->group(function () {
         Route::get("/general", [AdminController::class, "general"])->name("admin.general");
+
+        Route::get("/profile", [AdminProfileController::class, "view"])->name("admin.profile_get");
+        Route::post("/profile", [AdminProfileController::class, "handle"])->name("admin.profile_post");
 
         Route::get("/manage-account", [ManageAccountController::class, "view"])->name("admin.manage_account");
         Route::get("/manage-account/{id}", [ManageAccountController::class, "view_details"])->name("admin.account_details");

@@ -1,8 +1,8 @@
 <x-layouts.account-layout title="Profile" route-name="Profile" includeMainComponent="true">
     <x-slot:head>
-        <link rel="stylesheet" href="{{ asset("css/user/profile.css")}}" />
+        <link rel="stylesheet" href="{{ asset("css/admin/profile.css")}}" />
 
-        <script type="module" src="{{ asset("js/user-profile.js")}}" defer></script>
+        <script type="module" src="{{ asset("js/admin-profile.js")}}" defer></script>
     </x-slot:head>
 
     <x-slot:content>
@@ -102,7 +102,7 @@
 
                         <script>
                             function redirect() {
-                                return window.location.href = window.location.protocol + "//" + window.location.hostname + ":8000" + "/user/general"
+                                return window.location.href = window.location.protocol + "//" + window.location.hostname + ":8000" + "/admin/general"
                             }
                         </script>
                     </div>
@@ -114,12 +114,15 @@
                 <section>
                     <div class="-card-layout">
                         <div class="-card-header">
-                            <div>
+                            <div class="-text">
                                 <h5>Profile</h5>
+                            </div>
+                            <div class="-role">
+                                <span>Admin</span>
                             </div>
                         </div>
                         <div class="-card-content">
-                            <form method="POST" action="{{ route("user.profile_post") }}" class="-form"
+                            <form method="POST" action="{{ route("admin.profile_post") }}" class="-form"
                                   enctype="multipart/form-data">
                                 @csrf
                                 <div class="-inner-card-content">
@@ -222,8 +225,9 @@
                                             <div class="-content-input">
                                                 <div style="display: flex; align-items: center; gap: 8px">
                                                     <div style="display: flex; align-items: center">
-                                                        <input id="old_image" type="file" name="old_image"
-                                                               value="{{asset("storage/images/" . $user[0]->image)}}"
+                                                        <input id="old_image" type="text" name="old_image"
+                                                               src="{{asset("storage/images/" . $user[0]->image)}}"
+                                                               value="{{$user[0]->image}}"
                                                                hidden />
                                                         <input id="image" type="file" name="image"
                                                                accept="image/png, image/jpg, image/jpeg" />

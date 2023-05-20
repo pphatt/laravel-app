@@ -27,18 +27,18 @@
                 </div>
             </nav>
         </div>
-        <div class="-table">
-            <article class="-inner-table">
+        <div class="-card">
+            <article class="-inner-card">
                 <section>
-                    <div class="-table-layout">
-                        <div class="-table-header">
+                    <div class="-card-layout">
+                        <div class="-card-header">
                             <div>
                                 <h5>Account Information</h5>
                             </div>
                         </div>
-                        <div class="-table-content">
+                        <div class="-card-content">
                             <div class="-inner">
-                                <div class="-inner-table-content">
+                                <div class="-inner-card-content">
                                     <div class="-row">
                                         <div class="-row-content">
                                             <div class="-row-title">
@@ -103,8 +103,8 @@
                         </div>
                         <div class="-danger-zone-layout">
                             <div class="-inner">
-                                <div class="-card">
-                                    <div class="-inner-card">
+                                <div class="-delete-account-card">
+                                    <div class="-inner-delete-account-card">
                                         <div class="-svg">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
