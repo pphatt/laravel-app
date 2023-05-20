@@ -65,7 +65,7 @@ class UserProfile {
                  <section class="-view-photo-section">
                     <div class="-inner-view-photo-section">
                         <div class="-view-photo-title">
-                            <h5>Old Photo</h5>
+                            <h5>Old Image</h5>
                         </div>
                         <div class="-view-photo">
                             <img src="${this.old_image}" alt="" />
@@ -91,7 +91,7 @@ class UserProfile {
                  <section class="-view-photo-section">
                     <div class="-inner-view-photo-section">
                         <div class="-view-photo-title">
-                            <h5>Old Photo</h5>
+                            <h5>New Image</h5>
                         </div>
                         <div class="-view-photo">
                             <img src="${this.new_image}" alt="" />
