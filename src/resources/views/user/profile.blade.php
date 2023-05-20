@@ -129,9 +129,9 @@
                                                 <span>Username</span>
                                             </div>
                                             <div class="-content-input">
-                                                <input type="text" name="old_user_name" value="{{$user[0]->name}}"
+                                                <input type="text" name="old_name" value="{{$user[0]->name}}"
                                                        hidden />
-                                                <input type="text" name="user_name" value="{{$user[0]->name}}" />
+                                                <input type="text" name="name" value="{{$user[0]->name}}" />
                                             </div>
                                         </div>
                                     </div>
@@ -201,13 +201,15 @@
                                                 <span>Sex</span>
                                             </div>
                                             <div class="-content-input">
+                                                <input type="text" name="old_sex"
+                                                       value="{{$user[0]->sex}}" hidden />
                                                 <select id="sex" name="sex">
                                                     <option
-                                                        value="male" {{($user[0]->sex == "Male") ? "selected" : null}}>
+                                                        value="male" {{($user[0]->sex == "male") ? "selected" : null}}>
                                                         Male
                                                     </option>
                                                     <option
-                                                        value="female" {{($user[0]->sex == "Male") ? "selected" : null}}>
+                                                        value="female" {{($user[0]->sex == "female") ? "selected" : null}}>
                                                         Female
                                                     </option>
                                                 </select>
