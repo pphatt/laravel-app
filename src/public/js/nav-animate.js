@@ -109,17 +109,28 @@ class NavAnimation {
         this.navExpandElement.addEventListener("animationend", handleAnimationEnd);
     }
     animationExpand(name) {
-        const shop = ["Everything", "Vinyls", "Apparel", "Poster"];
-        const info = ["About", "Contact"];
+        const shop = [
+            {
+                name: "Everything",
+                route: "/shop",
+            },
+            { name: "Vinyls", route: "/vinyl" },
+            { name: "Apparel", route: "/apparel" },
+            { name: "Poster", route: "/poster" },
+        ];
+        const info = [
+            { name: "About", route: "/about" },
+            { name: "Contact", route: "/contact" },
+        ];
         let li = "";
         if (this.stateShopTransition) {
-            for (const a of shop) {
-                li += `<li><a href="">${a}</a></li>`;
+            for (const { name, route } of shop) {
+                li += `<li><a href=${route}>${name}</a></li>`;
             }
         }
         else {
-            for (const a of info) {
-                li += `<li><a href="">${a}</a></li>`;
+            for (const { name, route } of info) {
+                li += `<li><a href=${route}>${name}</a></li>`;
             }
         }
         if (this.stateShopTransition || this.stateInfoTransition) {

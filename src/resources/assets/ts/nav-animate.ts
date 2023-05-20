@@ -178,17 +178,29 @@ class NavAnimation {
   }
 
   animationExpand(name: string) {
-    const shop: string[] = ["Everything", "Vinyls", "Apparel", "Poster"]
-    const info: string[] = ["About", "Contact"]
+    const shop: { name: string; route: string }[] = [
+      {
+        name: "Everything",
+        route: "/shop",
+      },
+      { name: "Vinyls", route: "/vinyl" },
+      { name: "Apparel", route: "/apparel" },
+      { name: "Poster", route: "/poster" },
+    ]
+
+    const info: { name: string; route: string }[] = [
+      { name: "About", route: "/about" },
+      { name: "Contact", route: "/contact" },
+    ]
     let li = ""
 
     if (this.stateShopTransition) {
-      for (const a of shop) {
-        li += `<li><a href="">${a}</a></li>`
+      for (const {name, route} of shop) {
+        li += `<li><a href=${route}>${name}</a></li>`
       }
     } else {
-      for (const a of info) {
-        li += `<li><a href="">${a}</a></li>`
+      for (const {name, route} of info) {
+        li += `<li><a href=${route}>${name}</a></li>`
       }
     }
 
