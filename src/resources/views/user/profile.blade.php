@@ -222,8 +222,9 @@
                                             <div class="-content-input">
                                                 <div style="display: flex; align-items: center; gap: 8px">
                                                     <div style="display: flex; align-items: center">
-                                                        <input id="old_image" type="file" name="old_image"
-                                                               value="{{asset("storage/images/" . $user[0]->image)}}"
+                                                        <input id="old_image" type="text" name="old_image"
+                                                               src="{{asset("storage/images/" . $user[0]->image)}}"
+                                                               value="{{ $user[0]->image }}"
                                                                hidden />
                                                         <input id="image" type="file" name="image"
                                                                accept="image/png, image/jpg, image/jpeg" />

@@ -48,8 +48,8 @@ class HandleUploadImage {
     this.old_show_image_1 = old_show_image_1
     this.old_show_image_2 = old_show_image_2
 
-    this.old_image_1 = old_input_image_1.getAttribute("src")
-    this.old_image_2 = old_input_image_2.getAttribute("src")
+    this.old_image_1 = old_input_image_1.getAttribute("src") as string
+    this.old_image_2 = old_input_image_2.getAttribute("src") as string
 
     this.handleOldImage()
     this.handleNewImage()

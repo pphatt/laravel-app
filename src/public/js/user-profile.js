@@ -12,7 +12,7 @@ class UserProfile {
             .lastElementChild;
         this.input_old_image = input_old_image;
         this.input_new_image = input_new_image;
-        this.old_image = this.input_old_image.getAttribute("value");
+        this.old_image = this.input_old_image.getAttribute("src");
         this.setupEventListener();
     }
     setupEventListener() {

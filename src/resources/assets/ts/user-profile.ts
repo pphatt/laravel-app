@@ -31,7 +31,7 @@ class UserProfile {
     this.input_old_image = input_old_image
     this.input_new_image = input_new_image
 
-    this.old_image = this.input_old_image.getAttribute("value") as string
+    this.old_image = this.input_old_image.getAttribute("src") as string
 
     this.setupEventListener()
   }

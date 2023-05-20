@@ -125,8 +125,9 @@
                                                     <div style="display: flex; align-items: center; gap: 8px">
                                                         <div
                                                             style="display: flex; align-items: center">
-                                                            <input id="old_photo_1" type="file" name="old_image_1"
-                                                                   src="{{asset("storage/images/" . $product[0]->image_1)}}"
+                                                            <input id="old_photo_1" type="text" name="old_image_1"
+                                                                   src="{{ asset("storage/images/" . $product[0]->image_1) }}"
+                                                                   value="{{ $product[0]->image_1 }}"
                                                                    hidden />
                                                             <input id="photo_1" type="file" name="image_1"
                                                                    accept="image/png, image/jpg, image/jpeg" />
@@ -160,8 +161,9 @@
                                                     <div style="display: flex; align-items: center; gap: 8px">
                                                         <div
                                                             style="display: flex; align-items: center">
-                                                            <input id="old_photo_2" type="file" name="old_image_2"
+                                                            <input id="old_photo_2" type="text" name="old_image_2"
                                                                    src="{{asset("storage/images/" . $product[0]->image_2)}}"
+                                                                   value="{{ $product[0]->image_2 }}"
                                                                    hidden />
 
                                                             <input id="photo_2" type="file" name="image_2"
