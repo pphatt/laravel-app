@@ -1,4 +1,4 @@
-class UserProfile {
+class AdminProfile {
     private card: HTMLElement
 
     private show_btn_group: HTMLElement
@@ -107,7 +107,7 @@ class UserProfile {
     }
 }
 
-const show_image = new UserProfile({
+const show_image = new AdminProfile({
     card: document.querySelector(".-card") as HTMLElement,
     input_old_image: document.querySelector("#old_image") as HTMLInputElement,
     input_new_image: document.querySelector("#image") as HTMLInputElement,

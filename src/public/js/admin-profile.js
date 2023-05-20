@@ -1,5 +1,5 @@
 "use strict";
-class UserProfile {
+class AdminProfile {
     constructor(elems) {
         this.old_image = "";
         this.new_image = "";
@@ -77,7 +77,7 @@ class UserProfile {
         });
     }
 }
-const show_image = new UserProfile({
+const show_image = new AdminProfile({
     card: document.querySelector(".-card"),
     input_old_image: document.querySelector("#old_image"),
     input_new_image: document.querySelector("#image"),

@@ -16,6 +16,28 @@ class AddProductController extends Controller
 
     public function handle(Request $request)
     {
+        $request->validate([
+            "name" => "required|max:100",
+            "category" => "required",
+            "price" => "required|numeric",
+            "quantity" => "required|numeric",
+            "description" => "required|max:256",
+            "image_1" => "required",
+            "image_2" => "required",
+        ], [
+            "name.required" => "Product name is required",
+            "name.max:100" => "Product name character must less than 100 characters",
+            "category.required" => "Product category is required",
+            "price.required" => "Product price is required",
+            "price.numeric" => "Product price must be digits",
+            "quantity.required" => "Product quantity is required",
+            "quantity.numeric" => "Product quantity must be digits",
+            "description.required" => "Product description is required",
+            "description.max:256" => "Product description must less than 256 characters",
+            "image_1.required" => "Product Image 1 is required",
+            "image_2.required" => "Product Image 2 is required"
+        ]);
+
         $image_1 = "";
         $image_2 = "";
         $image_path = "";

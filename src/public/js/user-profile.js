@@ -77,7 +77,7 @@ class UserProfile {
         });
     }
 }
-const show_image = new UserProfile({
+const _show_image = new UserProfile({
     card: document.querySelector(".-card"),
     input_old_image: document.querySelector("#old_image"),
     input_new_image: document.querySelector("#image"),

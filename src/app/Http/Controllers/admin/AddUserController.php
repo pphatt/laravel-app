@@ -16,6 +16,16 @@ class AddUserController extends Controller
 
     public function handle(Request $request)
     {
+        $request->validate([
+            "email" => "required",
+            "password" => "required",
+            "role" => "required",
+        ], [
+            "email.required" => "User email is required",
+            "password.required" => "User password is required",
+            "role.required" => "User role must be provided",
+        ]);
+
         DB::transaction(function () use ($request) {
             DB::table("users")->insert([
                 "name" => $request->get("email"),
