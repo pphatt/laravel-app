@@ -151,7 +151,7 @@
                                                         <div
                                                             style="display: flex; align-items: center">
                                                             <input id="photo_1" type="file" name="image_1"
-                                                                   accept="image/png, image/jpg" required />
+                                                                   accept="image/png, image/jpg, image/jpeg" required />
                                                             <label for="photo_1" class="photo">
                                                                 Upload Photo
                                                             </label>
@@ -177,7 +177,7 @@
                                                         <div
                                                             style="display: flex; align-items: center">
                                                             <input id="photo_2" type="file" name="image_2"
-                                                                   accept="image/png, image/jpg" required />
+                                                                   accept="image/png, image/jpg, image/jpeg" required />
                                                             <label for="photo_2" class="photo">
                                                                 Upload Photo
                                                             </label>
