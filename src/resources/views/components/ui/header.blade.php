@@ -95,7 +95,7 @@
                                     <h2 class="-product-title">
                                         <a
                                             class="-product-link"
-                                            href=""
+                                            href="{{route("products", ["id" => $products[4]->id])}}"
                                         >
                                             {{$products[4]->name}}
                                         </a>
@@ -129,7 +129,7 @@
                                     <h2 class="-product-title">
                                         <a
                                             class="-product-link"
-                                            href=""
+                                            href="{{route("products", ["id" => $products[6]->id])}}"
                                         >
                                             {{$products[6]->name}}
                                         </a>

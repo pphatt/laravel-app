@@ -90,6 +90,9 @@
   border-bottom-color: #000;
   background-position: top;
 }
+.main-navigator.isScroll .cart {
+  border-color: black;
+}
 .main-navigator.isScroll div > a,
 .main-navigator.isScroll div > button {
   color: #000;
@@ -519,7 +522,7 @@
 
 .cart {
   display: flex;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 9999px;
   color: currentColor;
   flex-direction: column;

@@ -14,7 +14,8 @@ class HomeController extends Controller
     {
         $products = DB::table("products")
             ->distinct()
-            ->select("products.product_name as name", "products.image_alt as image_alt", "products.image_1 as default_image", "products.image_2 as hover_image",
+            ->select("product_items.product_id as id", "products.product_name as name", "products.image_alt as image_alt",
+                "products.image_1 as default_image", "products.image_2 as hover_image",
                 "promotions.promotion_discount_rate as discount", "products.price as price")
             ->join("product_items", "products.product_id", "=", "product_items.product_id")
             ->leftJoin("promotions", function ($query) {

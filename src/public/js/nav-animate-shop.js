@@ -13,12 +13,14 @@ class NavAnimateShop {
                 product_figure_1: "http://localhost:8000/storage/images/1684645515/aYiPtLn5o0fTAt8CMxYlYgkC9PI2GiEpCm8Lk2bt.jpg",
                 product_image_alt: "front of black Ultra Magic shirt",
                 product_price: 40,
+                link: "http://localhost:8000/products/5",
             },
             {
                 product_name: "群青",
                 product_figure_1: "http://localhost:8000/storage/images/1684646339/eKsQnpijskRn0WEnxHntrGJVSPbrxj6cLYBPyz71.jpg",
                 product_image_alt: "Yoasobi - 群青",
                 product_price: 40,
+                link: "http://localhost:8000/products/7",
             },
         ];
         const { navElement, shopButtonElement, infoButtonElement, navExpandElement, navUlGroupElement, line, featureTitle, navFeatureGroupElement, } = elems;
@@ -216,7 +218,7 @@ class NavAnimateShop {
     }
     DOMNavFeature() {
         let innerFeatureProducts = "";
-        for (const { product_name, product_figure_1, product_image_alt, product_price, } of this.featureProducts) {
+        for (const { product_name, link, product_figure_1, product_image_alt, product_price, } of this.featureProducts) {
             innerFeatureProducts += `
         <div class="-product-card-featured">
           <div class="-product-card-visual">
@@ -241,7 +243,7 @@ class NavAnimateShop {
               <h2 class="-product-title">
                 <a
                   class="-product-link"
-                  href=""
+                  href="${link}"
                 >
                   ${product_name}
                 </a>

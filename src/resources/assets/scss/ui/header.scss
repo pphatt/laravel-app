@@ -118,6 +118,10 @@
     border-bottom-color: var.$base-background;
     background-position: top;
 
+    .cart {
+      border-color: black;
+    }
+
     div > {
       a,
       button {
@@ -626,7 +630,7 @@
 
 .cart {
   display: flex;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 9999px;
   color: currentColor;
   flex-direction: column;

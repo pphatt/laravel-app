@@ -45,7 +45,7 @@
                                         <div class="-product-card-details">
                                             <div class="-product-card-header">
                                                 <h2 class="-product-title">
-                                                    <a class="-product-link" href="">{{$product->name}}</a>
+                                                    <a class="-product-link" href="{{route("products", ["id" => $product->id])}}">{{$product->name}}</a>
                                                 </h2>
                                                 <div class="-price">
                                                     @if(!empty($product->discount))
