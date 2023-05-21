@@ -15,6 +15,22 @@ class NavAnimation {
   private stateShopTransition: boolean = false
   private stateInfoTransition: boolean = false
   private statePendingSwitchAnimation: boolean = false
+  private featureProducts = [
+    {
+      product_name: "夜に駆ける",
+      product_figure_1:
+        "http://localhost:8000/storage/images/1684645515/aYiPtLn5o0fTAt8CMxYlYgkC9PI2GiEpCm8Lk2bt.jpg",
+      product_image_alt: "front of black Ultra Magic shirt",
+      product_price: 40,
+    },
+    {
+      product_name: "群青",
+      product_figure_1:
+        "http://localhost:8000/storage/images/1684646339/eKsQnpijskRn0WEnxHntrGJVSPbrxj6cLYBPyz71.jpg",
+      product_image_alt: "Yoasobi - 群青",
+      product_price: 40,
+    },
+  ]
 
   constructor(elems: {
     navElement: HTMLElement
@@ -195,12 +211,12 @@ class NavAnimation {
     let li = ""
 
     if (this.stateShopTransition) {
-      for (const {name, route} of shop) {
-        li += `<li><a href=${route}>${name}</a></li>`
+      for (const { name, route } of shop) {
+        li += `<li><a href="${route}">${name}</a></li>`
       }
     } else {
-      for (const {name, route} of info) {
-        li += `<li><a href=${route}>${name}</a></li>`
+      for (const { name, route } of info) {
+        li += `<li><a href="${route}">${name}</a></li>`
       }
     }
 
@@ -288,41 +304,14 @@ class NavAnimation {
   }
 
   DOMNavFeature() {
-    const featureProducts = [
-      {
-        product_name: "Ultra Magic Tee",
-        product_figure_1:
-          "https://cdn.sanity.io/images/ieasd5lg/production/44465ea927eb678f562b5f2d938a81c7d054cbb4-2400x1800.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format",
-        product_figure_2:
-          "https://cdn.sanity.io/images/ieasd5lg/production/9fcd6d25c0f0cb7851f47fb62426e03e317ccbbd-2400x1800.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format",
-        product_image_alt: "front of black Ultra Magic shirt",
-        product_price: 24.95,
-      },
-      {
-        product_name: "Ultra Magic",
-        product_figure_1:
-          "https://cdn.sanity.io/images/ieasd5lg/production/6f7afac34661661fd162cb89f8b01f3534fa9f3b-2049x2016.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format",
-        product_figure_2:
-          "https://cdn.sanity.io/images/ieasd5lg/production/a2e872eb3708f987cb0ec98d9fead7a09a42a7c4-2049x2016.jpg?w=1200&amp;q=80&amp;fit=max&amp;auto=format",
-        product_image_alt: "front cover of Ultra Magic vinyl",
-        product_price: 35,
-        product_sale: {
-          percentage: 20,
-          price_after_sale: 28,
-        },
-      },
-    ]
-
     let innerFeatureProducts = ""
 
     for (const {
       product_name,
       product_figure_1,
-      product_figure_2,
       product_image_alt,
       product_price,
-      product_sale,
-    } of featureProducts) {
+    } of this.featureProducts) {
       innerFeatureProducts += `
         <div class="-product-card-featured">
           <div class="-product-card-visual">
@@ -340,19 +329,6 @@ class NavAnimation {
                   </picture>
                 </div>
               </figure>
-              <figure class="is-hover">
-                <div>
-                  <picture>
-                    <img
-                      width="1200"
-                      sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      decoding="async"
-                      alt="${product_image_alt}"
-                      src="${product_figure_2}"
-                    />
-                  </picture>
-                </div>
-              </figure>
             </div>
           </div>
           <div class="-product-card-details">
@@ -366,16 +342,7 @@ class NavAnimation {
                 </a>
               </h2>
               <div class="-price">
-                ${
-                  product_sale
-                    ? `
-                  <span class="-price-current">$28</span>
-                  <span class="-price-discount">20%</span>
-                `
-                    : `
-                  <span class="-price-current">${product_price}</span>
-                `
-                }
+                <span class="-price-current">${product_price}</span>
               </div>
             </div>
           </div>
@@ -398,7 +365,7 @@ class NavAnimation {
   }
 }
 
-const n = new NavAnimation({
+const navAnimation = new NavAnimation({
   navElement: document.getElementById("main-navigator") as HTMLElement,
   shopButtonElement: document.getElementById("-shop-nav") as HTMLElement,
   infoButtonElement: document.getElementById("-info-nav") as HTMLElement,

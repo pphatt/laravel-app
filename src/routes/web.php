@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\ManageAccountController;
 use App\Http\Controllers\admin\ManageProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\user\OrderController;
 use App\Http\Controllers\user\UserController;
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/", [HomeController::class, "index"])->name("home");
+
+//Route::get("/products")
 
 Route::group(["middleware" => ["auth", "role"]], function () {
     Route::prefix("user")->group(function () {
@@ -88,6 +91,8 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::get("/shop", [ShopController::class, "view"])->name("shop");
+
+Route::get("/products/{id}", [ProductController::class, "view"])->name("products");
 
 Route::fallback(function () {
 

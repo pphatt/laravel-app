@@ -1,5 +1,5 @@
 "use strict";
-class NavAnimation {
+class NavAnimateShop {
     constructor(elems) {
         this.stateIsScroll = document.getElementById("main-navigator")?.classList.contains("isScroll") ||
             true;
@@ -91,15 +91,12 @@ class NavAnimation {
     }
     setupAnimationEnd() {
         const handleAnimationEnd = (e) => {
-            if (e.animationName.includes("dropdown-up-1") ||
+            if (
+            //@ts-ignore
+            e.animationName.includes("dropdown-up-1") ||
+                //@ts-ignore
                 e.animationName.includes("dropdown-up-2")) {
                 this.navElement.removeAttribute("style");
-                if (window.scrollY < 36) {
-                    this.navElement?.classList.remove("isScroll");
-                }
-                else {
-                    this.navElement?.classList.add("isScroll");
-                }
                 this.navExpandElement.className = "-nav-expand-outer";
                 this.navUlGroupElement.className = "";
                 this.navUlGroupElement.innerHTML = "";
@@ -114,7 +111,9 @@ class NavAnimation {
                 this.stateShopTransition = false;
                 this.stateInfoTransition = false;
             }
-            if (e.animationName.includes("text-slide-out") &&
+            if (
+            //@ts-ignore
+            e.animationName.includes("text-slide-out") &&
                 this.statePendingSwitchAnimation) {
                 this.navUlGroupElement.className = "-active";
                 this.animationExpand(this.stateShopTransition ? "shop" : "info");
@@ -150,7 +149,7 @@ class NavAnimation {
         if (this.stateShopTransition || this.stateInfoTransition) {
             this.navUlGroupElement.innerHTML = li;
         }
-        this.stateIsScroll = this.navElement.classList.contains("isScroll");
+        this.stateIsScroll = true;
         if (this.stateNavExpand) {
             this.line.className = "line -active";
             this.featureTitle.className = "-active";
@@ -269,7 +268,7 @@ class NavAnimation {
     `;
     }
 }
-const navAnimation = new NavAnimation({
+const navAnimateShop = new NavAnimateShop({
     navElement: document.getElementById("main-navigator"),
     shopButtonElement: document.getElementById("-shop-nav"),
     infoButtonElement: document.getElementById("-info-nav"),

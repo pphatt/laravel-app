@@ -12,30 +12,9 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-//        $shop_orders = DB::table("shop_orders")->where("shipping_address", "JP")->get();
-//        $shop_orders = DB::table("shop_orders")->where("shipping_address", "JP")->value("shipping_address");
-
-//        $shop_orders = DB::table("shop_orders")->pluck('user_id');
-
-//        $shop_orders = DB::table("shop_orders")->select(["user_id", "order_total"])->get();
-//
-//        $query = DB::table("shop_orders")->select("user_id");
-//        $user = $query->addSelect("order_total")->get();
-
-//        $shop_orders = DB::table("shop_orders")
-//            ->join("payment_methods", "shop_orders.payment_method_id", "=", "payment_methods.payment_method_id")
-//            ->join("shipping_methods", "shop_orders.shipping_method_id", "=", "shipping_methods.shipping_method_id")
-//            ->select("user_id", "shipping_methods.shipping_method_name", "payment_methods.payment_method_name", "shipping_address")
-//            ->where("shipping_address", "JP")
-//            ->get();
-
-//        $shop_orders = ShopOrder::query()
-//            ->join("payment_methods", "shop_orders.payment_method_id", "=", "payment_methods.payment_method_id")
-//            ->select("user_id", "payment_methods.payment_method_name")
-//            ->get();
-
         $products = DB::table("products")
-            ->select("products.product_name as name", "products.image_1 as default_image", "products.image_2 as hover_image",
+            ->distinct()
+            ->select("products.product_name as name", "products.image_alt as image_alt", "products.image_1 as default_image", "products.image_2 as hover_image",
                 "promotions.promotion_discount_rate as discount", "products.price as price")
             ->join("product_items", "products.product_id", "=", "product_items.product_id")
             ->leftJoin("promotions", function ($query) {
@@ -44,6 +23,15 @@ class HomeController extends Controller
                     ->on("promotions.promotion_id", "promotion_categories.promotion_id");
             })
             ->get();
+
+//        $cart = "";
+//
+//        if (auth()->user()->id) {
+//            $cart = DB::table("cart_items")
+//                ->count("cart_items.")
+//                ->where("cart_items.user_id", "=", auth()->user()->id)
+//                ->get();
+//        }
 
         return view("index", ["products" => $products]);
     }

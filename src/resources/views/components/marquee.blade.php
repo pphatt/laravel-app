@@ -8,21 +8,56 @@
                             @foreach($products as $product)
                                 <div class="marquee-product">
                                     <div class="-product-card">
-                                        <x-product-card
-                                            name="{{ $product->name}}"
-                                            price="{{$product->price}}"
-                                            discount="{{$product->discount}}"
-                                            price-after-discount="{{round(((100 - $product->discount) / 100 * $product->price), 2)}}"
-                                            default-image="{{$product->default_image}}"
-                                            hover-image="{{$product->hover_image}}"
-                                        >
-                                            <x-slot:visual>
-                                                <div class="-add-cart">
-                                                    <x-button>Add to Card</x-button>
+                                        <div class="-product-card-visual">
+                                            <div class="photo">
+                                                <figure class="is-default">
+                                                    <div>
+                                                        <picture>
+                                                            <img
+                                                                width="1200"
+                                                                sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                                decoding="async" alt={product_image_alt}
+                                                                class="object-cover is-loaded"
+                                                                src={{ asset("storage/images/" . $product->default_image) }} />
+                                                        </picture>
+                                                    </div>
+                                                </figure>
+                                                @empty(!$product->hover_image)
+                                                    <figure class="is-hover">
+                                                        <div>
+                                                            <picture>
+                                                                <img
+                                                                    width="1200"
+                                                                    sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                                    decoding="async" alt={product_image_alt}
+                                                                    class="object-cover is-loaded"
+                                                                    src={{ asset("storage/images/" . $product->hover_image) }} />
+                                                            </picture>
+                                                        </div>
+                                                    </figure>
+                                                @endempty
+                                            </div>
+                                            <div class="-add-cart">
+                                                <x-button>View details</x-button>
+                                            </div>
+                                        </div>
+
+                                        <div class="-product-card-details">
+                                            <div class="-product-card-header">
+                                                <h2 class="-product-title">
+                                                    <a class="-product-link" href="">{{$product->name}}</a>
+                                                </h2>
+                                                <div class="-price">
+                                                    @if(!empty($product->discount))
+                                                        <span
+                                                            class="-price-current">${{round(((100 - $product->discount) / 100 * $product->price), 2)}}</span>
+                                                        <span class="-price-discount">{{$product->discount}}% off</span>
+                                                    @else
+                                                        <span class="-price-current">${{$product->price}}</span>
+                                                    @endif
                                                 </div>
-                                            </x-slot:visual>
-                                            <x-slot:details></x-slot:details>
-                                        </x-product-card>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

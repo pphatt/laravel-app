@@ -56,6 +56,7 @@
                     <circle cx="17.5" cy="19.5" r="1.5"></circle>
                 </svg>
                 Cart
+                <span class="cart">0</span>
             </a>
         </div>
     </div>
@@ -71,21 +72,74 @@
                         <div class="-feature-title">
                             <span id="-ft">Feature</span>
                         </div>
-                        @for($i = 0; $i < 2; $i++)
-                            <div class="-product-card-featured">
-                                <x-product-card
-                                    name="{{ $products[$i]->name}}"
-                                    price="{{$products[$i]->price}}"
-                                    discount="{{$products[$i]->discount}}"
-                                    price-after-discount="{{round(((100 - $products[$i]->discount) / 100 * $products[$i]->price), 2)}}"
-                                    default-image="{{$products[$i]->default_image}}"
-                                    hover-image="{{$products[$i]->hover_image}}"
-                                >
-                                    <x-slot:visual></x-slot:visual>
-                                    <x-slot:details></x-slot:details>
-                                </x-product-card>
+                        <div class="-product-card-featured">
+                            <div class="-product-card-visual">
+                                <div class="photo">
+                                    <figure class="is-default">
+                                        <div>
+                                            <picture>
+                                                <img
+                                                    width="1200"
+                                                    sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                    decoding="async"
+                                                    alt="{{ $products[4]->image_alt }}"
+                                                    src="{{ asset("storage/images/" . $products[4]->default_image) }}"
+                                                />
+                                            </picture>
+                                        </div>
+                                    </figure>
+                                </div>
                             </div>
-                        @endfor
+                            <div class="-product-card-details">
+                                <div class="-product-card-header">
+                                    <h2 class="-product-title">
+                                        <a
+                                            class="-product-link"
+                                            href=""
+                                        >
+                                            {{$products[4]->name}}
+                                        </a>
+                                    </h2>
+                                    <div class="-price">
+                                        <span class="-price-current">${{$products[4]->price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="-product-card-featured">
+                            <div class="-product-card-visual">
+                                <div class="photo">
+                                    <figure class="is-default">
+                                        <div>
+                                            <picture>
+                                                <img
+                                                    width="1200"
+                                                    sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                                    decoding="async"
+                                                    alt="{{ $products[6]->image_alt }}"
+                                                    src="{{ asset("storage/images/" . $products[6]->default_image) }}"
+                                                />
+                                            </picture>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="-product-card-details">
+                                <div class="-product-card-header">
+                                    <h2 class="-product-title">
+                                        <a
+                                            class="-product-link"
+                                            href=""
+                                        >
+                                            {{$products[6]->name}}
+                                        </a>
+                                    </h2>
+                                    <div class="-price">
+                                        <span class="-price-current">${{$products[6]->price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -50,10 +50,12 @@
   transition-duration: 300ms;
 }
 .main-navigator div > a[data-btn-type=link],
+.main-navigator div > a[data-btn-type=default],
 .main-navigator div > button[data-btn-type=default] {
   color: white;
 }
 .main-navigator div > a[data-btn-type=link]:hover,
+.main-navigator div > a[data-btn-type=default]:hover,
 .main-navigator div > button[data-btn-type=default]:hover {
   color: white;
 }
@@ -513,6 +515,22 @@
 }
 .button:disabled {
   cursor: not-allowed;
+}
+
+.cart {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 9999px;
+  color: currentColor;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 700;
+  height: 32px;
+  justify-content: center;
+  line-height: 16px;
+  margin-left: 8px;
+  width: 32px;
+  text-decoration: none !important;
 }
 
 /*# sourceMappingURL=header.css.map */

@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="{{ asset("css/ui/footer.css") }}" />
     <link rel="stylesheet" href="{{ asset("css/components/button.css") }}" />
 
-    <script type="module" src="{{ asset("js/helper.js") }}" defer></script>
-    <script type="module" src="{{ asset("js/nav-animate.js") }}" defer></script>
-
     {{ $head }}
 </head>
 <body>
@@ -27,7 +24,7 @@
         </div>
     </div>
 
-    <x-ui.header is-scroll="is-scroll" :$products />
+    {{ $header }}
 
     {{ $main }}
 

@@ -1,0 +1,289 @@
+.promo-bar {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #000;
+  scroll-behavior: smooth;
+  z-index: 7;
+}
+.promo-bar .promo-bar-content {
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  justify-content: center;
+  padding: 11px 30px;
+}
+.promo-bar .promo-bar-content a {
+  display: block;
+  color: white;
+}
+
+.-product-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.-product-gallery {
+  padding: 96px;
+  background-color: white;
+  border-right: 1px solid black;
+}
+.-product-gallery div {
+  opacity: 1;
+}
+.-product-gallery div .-carousel {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  background-color: black;
+  position: relative;
+  width: 100%;
+}
+.-product-gallery div .-carousel .-carousel-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.-carousel-p {
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.-carousel-p figure {
+  margin: 0;
+  position: relative;
+  width: 100%;
+}
+.-carousel-p figure div {
+  padding-top: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.-carousel-p figure div picture {
+  display: block;
+  max-width: 100%;
+}
+.-carousel-p figure div picture img {
+  opacity: 1;
+  display: block;
+  height: calc(100% + 1px);
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition: opacity 0.4s linear;
+  width: calc(100% + 1px);
+  z-index: 1;
+  position: absolute;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.-product-details {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.-product-details .-product-info {
+  margin: auto;
+  max-width: 600px;
+  padding: 32px;
+  width: 100%;
+}
+.-product-details .-product-info .-product-header {
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  padding-bottom: 8px;
+}
+.-product-details .-product-info .-product-header .-product-variant {
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.-product-details .-product-info .-product-header .-product-a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.-product-details .-product-info .-product-header .-product-a .-product-name {
+  font-size: 34px;
+  line-height: 41px;
+  font-weight: 400;
+}
+.-product-details .-product-info .-product-header .-product-a .-product-price {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+}
+.-product-details .-product-info .-product-desc p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+.-product-details .-product-info .-product-options {
+  margin-top: 48px;
+}
+.-product-details .-product-info .-product-options .option {
+  border-top: 1px solid black;
+  display: flex;
+  margin-top: 16px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+.-product-details .-product-info .-product-options .option .option-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-right: 48px;
+  text-transform: uppercase;
+}
+.-product-details .-product-info .-product-options .option[data-option=size] .option-group {
+  column-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: auto;
+  row-gap: 8px;
+}
+.-product-details .-product-info .-product-options .option[data-option=size] .option-group > button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
+  border-radius: 9999px;
+  border: 1px solid black;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  padding: 9px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration-line: none;
+  transition-duration: 0.15s;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.-product-details .-product-info .-product-options .option[data-option=size] .option-group > button[data-select=selected] {
+  background-color: black;
+  border-color: black;
+  color: #f4f4f0;
+}
+.-product-details .-product-info .-product-options .option[data-option=size] .option-group > button:hover {
+  background-color: black;
+  border-color: black;
+  color: #f4f4f0;
+}
+.-product-details .-product-info .-product-options .option[data-option=color] .option-group {
+  column-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: auto;
+  row-gap: 8px;
+}
+.-product-details .-product-info .-product-options .option[data-option=color] .option-group > button {
+  appearance: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-family: inherit;
+  padding: 0;
+  text-decoration-line: none;
+  border: 0;
+}
+.-product-details .-product-info .-product-options .option[data-option=color] .option-group > button.black span {
+  background-color: #2e2e30;
+}
+.-product-details .-product-info .-product-options .option[data-option=color] .option-group > button.white span {
+  background-color: #ededed;
+}
+.-product-details .-product-info .-product-options .option[data-option=color] .option-group > button[data-select=selected] span:after {
+  border: 1px solid #000;
+  opacity: 1;
+}
+.-product-details .-product-info .-product-options .option[data-option=color] .option-group > button span {
+  border-radius: 9999px;
+  display: block;
+  height: 20px;
+  padding: 0;
+  position: relative;
+  width: 20px;
+}
+.-product-details .-product-info .-product-options .option[data-option=color] .option-group > button span:before {
+  border: 1px solid #fff;
+  border-radius: 9999px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+}
+.-product-details .-product-info .-product-options .option[data-option=color] .option-group > button span:after {
+  border-radius: 9999px;
+  content: "";
+  position: absolute;
+  inset: -3px;
+  transition-duration: 0.2s;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.-product-action {
+  display: flex;
+  background-image: radial-gradient(#000 9%, transparent 9%);
+  background-position: 0 0, 8px 8px;
+  background-size: 16px 16px;
+  border-top: 1px solid black;
+  bottom: 0;
+  margin-top: 16px;
+  padding: 32px;
+  position: sticky;
+  text-align: center;
+}
+.-product-action form {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  height: 50px;
+}
+.-product-action form > input {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 14px;
+  padding-left: 14px;
+}
+.-product-action form > button {
+  display: block;
+  width: 100%;
+  background-color: black;
+  border-color: black;
+  color: #f4f4f0;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 14px;
+  padding-left: 28px;
+  padding-right: 28px;
+  border-radius: 9999px;
+  border-width: 1px;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  text-decoration-line: none;
+  transition-duration: 0.15s;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*# sourceMappingURL=products.css.map */

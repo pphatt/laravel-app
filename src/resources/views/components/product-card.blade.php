@@ -21,7 +21,7 @@
                             sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
                             decoding="async" alt={product_image_alt}
                             class="object-cover is-loaded"
-                            src={{$hoverImage}} />
+                            src={{ $hoverImage }} />
                     </picture>
                 </div>
             </figure>

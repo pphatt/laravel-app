@@ -1,7 +1,14 @@
-<x-layouts.default-layout title="Tune Source" is-scroll="false" :$products>
+<x-layouts.default-layout title="Tune Source" :$products>
     <x-slot:head>
         <link rel="stylesheet" href="{{ asset("css/index.css") }}" />
+
+        <script type="module" src="{{ asset("js/helper.js") }}" defer></script>
+        <script type="module" src="{{ asset("js/nav-animate.js") }}" defer></script>
     </x-slot:head>
+
+    <x-slot:header>
+        <x-ui.header is-scroll="false" :$products />
+    </x-slot:header>
 
     <x-slot:main>
         <main>
