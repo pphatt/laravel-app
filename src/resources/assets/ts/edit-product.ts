@@ -177,7 +177,7 @@ class HandleUploadImage {
                   <h5>New Photo 2</h5>
                 </div>
                 <div class="-view-photo">
-                  <img src="${this.image_1}" alt="" />
+                  <img src="${this.image_2}" alt="" />
                 </div>
               </div>
             </section>

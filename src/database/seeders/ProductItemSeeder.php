@@ -30,18 +30,6 @@ class ProductItemSeeder extends Seeder
                 "product_id" => 4,
                 "quantity" => 46,
             ],
-            [
-                "product_id" => 5,
-                "quantity" => 47,
-            ],
-            [
-                "product_id" => 6,
-                "quantity" => 48,
-            ],
-            [
-                "product_id" => 7,
-                "quantity" => 49,
-            ]
         ]);
     }
 }

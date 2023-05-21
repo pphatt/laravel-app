@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div>
-                        <a href="{{ route("home") }}" class="button shop-vinyls" data-btn-type="link">
+                        <a href="{{ route("home") }}" class="button shop-vinyls" data-btn-type="link" style="text-decoration: none">
                             Shop vinyls
                         </a>
                     </div>
@@ -43,7 +43,7 @@
                             </p>
                             <div class="section-content-b">
                                 <a href="{{route("shop")}}" class="button"
-                                   data-btn-type="link">
+                                   data-btn-type="link" style="text-decoration: none">
                                     Start shopping
                                 </a>
                             </div>
