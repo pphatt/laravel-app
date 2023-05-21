@@ -19,6 +19,7 @@ class ShopController extends Controller
                 $query->join("promotions", "promotions.promotion_id", "=", "promotion_categories.promotion_id")
                     ->on("promotion_categories.category_id", "products.category_id");
             })
+            ->where("products.state", "=", "0")
             ->get();
 
         return view('shop', ["products" => $products]);
