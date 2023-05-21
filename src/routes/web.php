@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\ManageProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\user\OrderController;
 use App\Http\Controllers\user\UserController;
@@ -76,6 +77,9 @@ Route::group(["middleware" => ["auth", "role"]], function () {
 
         Route::post("/delete-product/{id}", [DeleteProductController::class, "handle"])->name("admin.delete_product_post");
     });
+
+    Route::get("/reset-password", [ResetPasswordController::class, "view"])->name("reset-password-get");
+    Route::post("/reset-password", [ResetPasswordController::class, "view"])->name("reset-password-post");
 });
 
 Route::controller(AuthController::class)->group(function () {
