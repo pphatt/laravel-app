@@ -79,7 +79,7 @@ Route::group(["middleware" => ["auth", "role"]], function () {
     });
 
     Route::get("/reset-password", [ResetPasswordController::class, "view"])->name("reset-password-get");
-    Route::post("/reset-password", [ResetPasswordController::class, "view"])->name("reset-password-post");
+    Route::post("/reset-password", [ResetPasswordController::class, "handle"])->name("reset-password-post");
 });
 
 Route::controller(AuthController::class)->group(function () {

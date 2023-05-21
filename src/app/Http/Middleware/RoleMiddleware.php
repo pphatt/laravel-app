@@ -23,6 +23,8 @@ class RoleMiddleware
                 return $next($request);
             } else if (Auth::user()->role == "0" && $url_parser[1] == "user") {
                 return $next($request);
+            } else if($url_parser[1] == "reset-password") {
+                return $next($request);
             } else {
                 return redirect("/");
             }
