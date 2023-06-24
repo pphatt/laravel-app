@@ -11,7 +11,7 @@
         "laravel-vite-plugin": "^0.7.2",
         "prettier": "2.8.8",
         "typescript": "^5.0.4",
-        "vite": "^4.0.0"
+        "vite": "^4.3.9"
     },
     "dependencies": {
         "sass": "^1.62.1"
