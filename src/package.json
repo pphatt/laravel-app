@@ -7,7 +7,7 @@
         "compiler:ts": "tsc -w"
     },
     "devDependencies": {
-        "axios": "^1.1.2",
+        "axios": "^1.6.0",
         "laravel-vite-plugin": "^0.7.2",
         "prettier": "2.8.8",
         "typescript": "^5.0.4",
